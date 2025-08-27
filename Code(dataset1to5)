@@ -1,0 +1,74 @@
+#dataset1
+import pandas as pd
+data = pd.read_csv('PesticideData.csv')
+
+
+print (data.head())
+print(data.info())
+print(data.describe())
+
+
+#data.drop(inplace=True)
+print(data.dtypes)
+
+#dataset2
+import pandas as pd
+data = pd.read_csv('LIPineBarrens_2020_Nutrients.csv')
+data = pd.read_csv('PesticideSpikeData.csv')
+print (data.head())
+print(data.info())
+print(data.describe())
+
+
+#data.drop(inplace=True)
+print(data.dtypes)
+
+#dataset3
+import pandas as pd
+data = pd.read_csv('Bacteria.csv')
+data = pd.read_csv('Volatile Organic Compound.csv')
+print (data.head())
+print(data.info())
+print(data.describe())
+
+
+#data.drop(inplace=True)
+print(data.dtypes)
+import pandas as pd
+data = pd.read_csv('PhysicalProperties.csv')
+
+
+
+
+print (data.head())
+print(data.info())
+print(data.describe())
+
+
+#data.drop(inplace=True)
+print(data.dtypes)
+
+
+#dataset4
+import pandas as pd
+data = pd.read_csv('Table4.csv')
+data = pd.read_csv('Table5.csv')
+data = pd.read_csv('Table6.csv')
+data = pd.read_csv('Table7.csv')
+data = pd.read_csv('Table8.csv')
+
+
+
+
+
+
+print (data.head())
+print(data.info())
+print(data.describe())
+
+
+#data.drop(inplace=True)
+print(data.dtypes)
+
+
+#regarding dataset5 I am not sure how to do it since it has already been preprocessed.
