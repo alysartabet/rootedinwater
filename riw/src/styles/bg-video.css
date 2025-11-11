@@ -1,0 +1,44 @@
+/* Background Video (scoped transparency) */
+/* Add `class="has-bg-video"` to <body> on pages that use the bg video */
+.has-bg-video{ background: transparent; }
+.has-bg-video .riw-main{ background: transparent; }
+
+/* Parallaxed, fixed video */
+.riw-bg-video{
+  position: fixed;
+  inset: 0;
+  left: 50%;
+  transform: translate3d(-50%, var(--bg-shift, 0px), 0);
+  width: 110vw;
+  height: 150vh;
+  object-fit: cover;
+  z-index: -1;
+  pointer-events: none;
+  will-change: transform;
+  filter: none;
+}
+
+/* Static video wrapper alternative */
+.bgvid-wrap{
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  background: #d2d4d3;
+}
+.bgvid-el{
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .bgvid-el{ display:none; }
+  .bgvid-wrap{ background: #0e1713 url('/water-poster.png') center/cover no-repeat; }
+}

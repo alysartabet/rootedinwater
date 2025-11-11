@@ -1,0 +1,138 @@
+/* --- NAV / HEADER --- */
+.header{
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: transparent;
+  backdrop-filter: none;
+  /* Optionals:
+  background: linear-gradient(180deg, rgba(14,23,19,.20), rgba(14,23,19,.20) 70%, transparent);
+  backdrop-filter: blur(6px);
+  */
+}
+.header .container{
+  width: 100%;
+  margin-top: 4vw;
+  margin-left: 3vw;
+}
+
+/* Unified home anchor */
+.home-anchor{
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.home-label{
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 8px;
+  transition: opacity .25s ease, width .25s ease, margin .25s ease;
+  white-space: nowrap;
+}
+
+/* Hide the “Home” text label when docked */
+.logo-docked .home-label{
+  opacity: 0;
+  width: 0;
+  margin-left: 0;
+  overflow: hidden;
+}
+
+.nav{
+  position: relative;
+  display: flex;
+  gap: clamp(20px, 6vw, 64px);
+  align-items: center;
+  padding: 18px 22px;
+  justify-content: flex-start; 
+}
+
+.header .nav a { color: rgb(52,121,123) !important; }
+
+.nav-link{
+  position: relative;
+  display: inline-block; 
+  font-family: "Cormorant Unicase", serif;
+  font-weight: 600;
+  letter-spacing: .02em;
+  font-size: clamp(16px, 2.5vw, 30px);
+  color: rgb(15, 71, 73);
+  text-decoration: none;
+  transition: color .4s ease, transform .4s ease, letter-spacing .4s ease;
+  text-shadow: 0 1px 2px rgba(0,0,0,.4), 0 0 1px rgba(0,0,0,.2);
+}
+
+.nav-link:hover{ 
+  color: rgb(38, 170, 174);
+  transform: translateY(-3px);
+  letter-spacing: .05em;
+  opacity: .9; 
+}
+
+.nav-link:focus-visible{
+  outline: 2px solid rgb(52,121,123);
+  outline-offset: 2px;
+}
+
+
+.nav-link::after{
+  content:"";
+  position:absolute;
+  left: 0; right: 0; bottom: -6px;
+  margin: 0 auto;
+  width: 0;
+  height: 2px;
+  background: rgb(15,71,73);
+  opacity: 0;
+  transition: width .25s ease, opacity .25s ease;
+}
+.nav-link.is-active::after{
+  width: 70%;
+  opacity: .9;
+}
+
+/* Brand text shows only when logo docks */
+.brand-link { display: none; }
+.logo-docked .brand-link { display: inline-block; }
+
+.nav .brand-link .brand-text{
+  font-family: "Cormorant Unicase", serif;
+  font-size: clamp(22px, 3vw, 34px);
+  font-weight: 700;
+  letter-spacing: .02em;
+  line-height: 1;
+  color: rgb(15,71,73);
+}
+
+/* Show underline on the brand only when docked AND Home is active */
+.logo-docked .header[data-active="home"] .brand-link.is-active::after{
+  width: 70%;
+  opacity: .9;
+}
+
+/* While NOT docked, underline the Home text link when Home is active */
+:not(.logo-docked) .header[data-active="home"] .home-link::after{
+  width: 70%;
+  opacity: .9;
+}
+
+.nav-spacer{ flex: 1 1 auto; }
+.nav-auth{
+  display:flex; gap:10px; align-items:center;
+  font-size: clamp(14px, 1.8vw, 18px);
+  color: rgb(15,71,73);
+  text-decoration:none;
+  padding: 6px 8px;
+}
+.nav-auth-icon{
+  width: 28px; height: 28px; display:block;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,.15));
+}
+
+/* Narrow screens */
+@media (max-width: 520px){
+  .nav{ gap: 18px; padding: 14px 16px; }
+}

@@ -65,7 +65,7 @@ export default function LoadingGate({ children }){
                     ref={videoRef}
                     className="loading-video"
                     src='/video/riw-intro.mp4'
-                    poster="/poster.png"
+                    poster="/img/poster.png"
                     playsInline
                     muted
                     preload="auto"

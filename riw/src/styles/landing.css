@@ -1,0 +1,85 @@
+/*===== Landing =====*/
+.landing-layer{
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 8vh 18px 10vh;
+}
+.landing-logo-wrap{
+  display: flex;
+  place-items: center;
+  margin: 0 auto; 
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: none;
+
+  margin-left: 5vw;
+}
+
+/* Floating/morphing logo */
+.riw-logo-floater{
+  opacity: 0;
+  position: absolute;
+  left: 0; top: 0;
+  z-index: 19;
+  width: 220px; height: 220px;
+  border: 0; background: transparent; padding: 0;
+  cursor: pointer;
+  will-change: transform;
+  transition: filter 200ms ease;
+}
+.riw-logo-floater img{
+  display: block; width: 100%; height: 100%;
+  object-fit: contain; pointer-events: none; user-select: none;
+  filter: drop-shadow(0 12px 28px rgba(0,0,0,.22));
+}
+.riw-logo-floater[data-docked="true"] img{
+  filter: drop-shadow(0 4px 14px rgba(0,0,0,.15));
+}
+
+/* Logo morph positioning */
+:root{
+  --logo-t: 0;            /* 0..1 from MorphingLogo */
+  --mark-left: 20.5%;
+  --mark-top: 46.0%;
+  --mark-width: 18.0%;
+}
+
+#riw-logo-start{
+  position: absolute;
+  left: var(--mark-left);
+  top:  var(--mark-top);
+  width: var(--mark-width);
+  aspect-ratio: 1 / 1;
+  transform: translate(-10%, 10%); 
+  pointer-events: none;
+  /* debug:
+  outline: 2px dashed rgba(0,140,255,.7); background: rgba(0,140,255,.08);
+  */
+}
+
+.landing-logo{
+  width: min(1000px, 90vw);
+  height: auto;
+  filter: drop-shadow(0 8px 24px rgba(0,0,0,.18));
+  user-select: none;
+  pointer-events: none;
+  display: block;
+  margin: 0 auto;
+  opacity: calc(1 - var(--logo-t));
+  transform: translateY(calc(var(--logo-t) * -12px));
+  transition: opacity 220ms ease, transform 220ms ease;
+  will-change: opacity, transform;
+}
+
+.landing-tagline{
+  margin-top: clamp(10px, 2vh, 24px);
+  font-family: "Cormorant Unicase", serif;
+  font-weight: 600;
+  font-size: clamp(28px, 2.4vw, 40px);
+  letter-spacing: .04em;
+  color: #377f82; 
+  text-shadow: 0 1px 0 rgba(0,0,0,.18);
+  text-align: center;
+}

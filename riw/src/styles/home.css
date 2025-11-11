@@ -1,0 +1,67 @@
+
+/* ==== Home Screen === */
+
+
+/* Home grid + Cards */
+.home-grid{
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  padding: 24px;
+}
+.card{
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 16px;
+}
+.card h3{ margin: 0 0 8px; }
+.card p{
+  margin: 0;
+  color: var(--muted);
+}
+
+
+/* ===== Popular searches ribbon ===== */
+.popular-ribbon{
+  margin-top: 8px;
+  margin-bottom: 10px;
+  padding: 12px 16px;
+  border: 1px solid rgba(0,0,0,.05);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.82);
+  box-shadow: 0 2px 10px rgba(0,0,0,.06);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 14px;
+  align-items: center;
+}
+.popular-title{
+  margin: 0 8px 0 4px;
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600;
+  font-size: clamp(16px, 2vw, 22px);
+  color: #6e8882;
+  text-transform: none;
+  letter-spacing: .04em;
+}
+.popular-pills{
+  display: flex; flex-wrap: wrap; gap: 12px;
+}
+.pill{
+  display:inline-block;
+  padding: 10px 16px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: clamp(14px, 1.8vw, 18px);
+  color: #2c5c5e;
+  background: #ffffff;
+  border: 1px solid #dfe8e6;
+  box-shadow: 0 1px 4px rgba(0,0,0,.06);
+}
+.pill:hover{ background:#f8fbfa; border-color:#cfe1dd; }
+
+/* mobile tweak */
+@media (max-width: 640px){
+  .popular-ribbon{ grid-template-columns: 1fr; }
+}

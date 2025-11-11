@@ -1,6 +1,8 @@
 import React from 'react'
 import LoadingGate from './components/LoadingGate'
+import BackgroundVideo from './components/BackgroundVideo'
 import Header from './components/Header'
+import MorphingLogo from './components/MorphingLogo'
 import Footer from './components/Footer'
 import Landing from './pages/Landing'
 import Home from './pages/Home'
@@ -15,8 +17,11 @@ export default function App(){
 export default function App() {
   return (
     <LoadingGate>
+      <BackgroundVideo scrollTargetSelector=".riw-main" />
+      
       <Header />
       <main className="riw-main">
+        <MorphingLogo scrollTargetSelector=".riw-main" />
         <section id="landing" className="snap-section">
           <Landing />
         </section>
