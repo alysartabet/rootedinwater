@@ -2,24 +2,134 @@
 /* ==== Home Screen === */
 
 
-/* Home grid + Cards */
-.home-grid{
+/* Seections */
+.home-section{ margin: 36px 0 28px; }
+.section-head h2{
+  margin: 0 0 14px;
+  font-family: "Cormorant Unicase", serif;
+  font-weight: 700;
+  letter-spacing: .02em;
+}
+
+/* Latest Updates grid */
+.updates-grid{
   display: grid;
   gap: 18px;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  padding: 24px;
 }
-.card{
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.02));
-  border: 1px solid rgba(255, 255, 255, 0.08);
+.update-card{
+  position: relative;
+  overflow: hidden;
   border-radius: 16px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.10);
+  min-height: 260px;
+}
+.update-media{
+  height: 160px;
+  background:
+    linear-gradient(180deg, rgba(141,218,183,.28), rgba(14,23,19,.00)),
+    radial-gradient(80% 60% at 50% 30%, rgba(255,255,255,.35), rgba(255,255,255,0));
+}
+.update-meta{
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 14px 4px;
+  font-size: 13px; color: #cfe3da;
+}
+.update-meta .badge{
+  display:inline-block; padding: 4px 10px; border-radius: 999px;
+  background: #1f3e3d; color: #bfe7d5; border: 1px solid rgba(255,255,255,.12);
+  font-weight: 600;
+}
+.update-meta .dot{ opacity:.5; }
+.update-title{
+  font-size: clamp(16px, 2.1vw, 20px);
+  padding: 0 14px 14px; margin: 4px 0 12px;
+}
+
+/* Hover reveal */
+.update-info{
+  position: absolute; left:0; right:0; bottom:0;
+  background: rgba(14,23,19,.86);
+  border-top: 1px solid rgba(255,255,255,.08);
+  transform: translateY(76%);
+  transition: transform .35s ease;
+  padding: 14px 14px 44px;
+}
+.update-card:hover .update-info,
+.update-card:focus-within .update-info{
+  transform: translateY(0%);
+}
+.update-summary{ margin: 0 0 8px; color: #dcefe7; }
+.update-loc{ font-size: 13px; color: #9fb9ad; }
+.update-cta{
+  position: absolute; right: 10px; bottom: 10px;
+  border: 1px solid rgba(255,255,255,.25);
+  background: transparent; color: #e6f3ed;
+  width: 36px; height: 36px; border-radius: 50%;
+  display: grid; place-items: center;
+  cursor: pointer;
+}
+.update-cta .arrow{ font-size: 18px; line-height: 1; }
+
+/* Regional Spotlight */
+.spotlight{
   padding: 16px;
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.04));
 }
-.card h3{ margin: 0 0 8px; }
-.card p{
-  margin: 0;
-  color: var(--muted);
+.spotlight-row{
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px; margin-bottom: 10px;
 }
+.kpi{ text-align: center; padding: 10px; }
+.kpi-num{ font-size: 34px; font-weight: 800; color:#8ddab7; }
+.kpi-label{ color:#cfe3da; }
+.spotlight-blurb{ color:#cfe3da; margin: 6px 0 12px; }
+.btn{
+  display:inline-block; padding: 10px 14px; border-radius: 10px;
+  background:#8ddab7; color:#0e1713; text-decoration:none; font-weight:700;
+}
+
+/* Data Insights */
+.insights{
+  display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+.insight-card{
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 16px; padding: 14px;
+  background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.03));
+}
+.insight-card h4{ margin: 0 0 10px; }
+.mini-chart{
+  display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; height: 120px;
+  align-items: end;
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0));
+  padding: 8px; border-radius: 10px; border: 1px solid rgba(255,255,255,.06);
+}
+.mini-chart > div{
+  background: rgba(141,218,183,.8);
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 4px;
+}
+
+/* Mission */
+.mission p{ color:#dcefe7; }
+
+/* Subscribe */
+.subscribe{
+  display: grid; grid-template-columns: 1fr auto; gap: 10px; max-width: 520px;
+}
+.subscribe input{
+  border-radius: 10px; padding: 12px 14px; border: 1px solid rgba(255,255,255,.18);
+  background: rgba(255,255,255,.92);
+}
+.subscribe button{
+  border-radius: 10px; padding: 12px 16px; border: 1px solid rgba(255,255,255,.18);
+  background: #8ddab7; color: #0e1713; font-weight: 800; cursor: pointer;
+}
+
 
 
 /* ===== Popular searches ribbon ===== */
