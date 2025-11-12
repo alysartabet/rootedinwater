@@ -4,33 +4,63 @@
   top: 0;
   z-index: 20;
   background: transparent;
-  backdrop-filter: none;
   /* Optionals:
+  backdrop-filter: none;
+  OR
   background: linear-gradient(180deg, rgba(14,23,19,.20), rgba(14,23,19,.20) 70%, transparent);
   backdrop-filter: blur(6px);
   */
 }
+
 .header .container{
   width: 100%;
+  padding-left: var(--header-pad-inline);
+  padding-right: var(--header-pad-inline);
+  /* Optionals
   margin-top: 4vw;
-  margin-left: 3vw;
+  margin-left: 3vw; */
 }
 
-/* Unified home anchor */
+.header .inner{ padding: 0 clamp(16px, 4vw, 48px); }
+
+
 .home-anchor{
-  width: 44px;
-  height: 44px;
+  width: 0;
+  height: 0;
+  flex:0 0 auto;
+  transition: width .25s ease, height .25s ease;
+
+  /* Optionals
+  transform: translateY(-50);
+  OR
   border-radius: 999px;
   display: inline-block;
   vertical-align: middle;
+  position: absolute;
+  left: 0;
+  top: 50%; */
 }
 
 .home-label{
+  position: relative;
   display: inline-block;
   vertical-align: middle;
   margin-left: 8px;
   transition: opacity .25s ease, width .25s ease, margin .25s ease;
   white-space: nowrap;
+}
+
+.home-link{
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  position:relative;
+}
+
+/* When the logo is docked, nav opens a slot for it */
+.logo-docked .home-anchor{
+  width: var(--logo-nav-w);
+  height: var(--logo-nav-h);
 }
 
 /* Hide the “Home” text label when docked */
@@ -41,13 +71,37 @@
   overflow: hidden;
 }
 
+.logo-docked .home-link {
+  margin-right: var(--logo-gutter); /* making room after docked logo (avoid cramping) */
+}
+
+.logo-docked .home-link .home-label{
+  opacity:0;
+  pointer-events:none;
+}
+
+/* Optional (fights base sizing)
+.riw-logo-floater img{
+  width: var(--logo-base-w);
+  height: auto;
+  display: block;
+} */
+
 .nav{
   position: relative;
   display: flex;
-  gap: clamp(20px, 6vw, 64px);
   align-items: center;
+  height: var(--header-h);
+  gap: var(--nav-gap);
+
+  /* Optionals
+  gap: clamp(20px, 6vw, 64px);
   padding: 18px 22px;
-  justify-content: flex-start; 
+  justify-content: flex-start;  */
+}
+
+.header .nav {
+  column-gap: var(--nav-gap);
 }
 
 .header .nav a { color: rgb(52,121,123) !important; }
@@ -78,7 +132,8 @@
 }
 
 
-.nav-link::after{
+.nav-link::after,
+.home-link .home-label::after{
   content:"";
   position:absolute;
   left: 0; right: 0; bottom: -6px;
@@ -89,7 +144,8 @@
   opacity: 0;
   transition: width .25s ease, opacity .25s ease;
 }
-.nav-link.is-active::after{
+.nav-link.is-active::after,
+.home-link.is-active .home-label::after{
   width: 70%;
   opacity: .9;
 }
@@ -109,12 +165,20 @@
 
 /* Show underline on the brand only when docked AND Home is active */
 .logo-docked .header[data-active="home"] .brand-link.is-active::after{
-  width: 70%;
-  opacity: .9;
+  content:"";
+  position:absolute;
+  left:0;                 /* align under the logo slot */
+  right:auto;
+  bottom:-6px;
+  width: var(--logo-nav-w, 56px);
+  height:2px;
+  background: rgb(15,71,73);
+  opacity:.9;
+  transition: width .25s ease, opacity .25s ease;
 }
 
 /* While NOT docked, underline the Home text link when Home is active */
-:not(.logo-docked) .header[data-active="home"] .home-link::after{
+:not(.logo-docked) .header[data-active="home"] .home-link .home-label::after{
   width: 70%;
   opacity: .9;
 }

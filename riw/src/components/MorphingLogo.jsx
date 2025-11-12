@@ -25,9 +25,16 @@ export default function MorphingLogo({
     const startA = document.getElementById("riw-logo-start");
     const hero   = document.querySelector(heroSelector);
     const vw = window.innerWidth, vh = window.innerHeight;
+    const cs = getComputedStyle(document.documentElement);
+    const cssW = parseFloat(cs.getPropertyValue("--logo-nav-w")) || 72;
+    const cssH = parseFloat(cs.getPropertyValue("--logo-nav-h")) || 46;
+    const base = parseFloat(cs.getPropertyValue("--logo-base-w")) || Math.min(Math.max(vw * 0.32, 240), 720);
+    meas.current.targetW = cssW;
+    meas.current.targetH = cssH;
+    
 
     // start point
-    let sx = vw / 2, sy = vh * 0.55, sWidth = 220;
+    let sx = vw / 2, sy = vh * 0.55, sWidth = base;
 
     if (startA) {
         const rs = startA.getBoundingClientRect();
@@ -39,16 +46,15 @@ export default function MorphingLogo({
     // end point
     if (homeA) {
         const r = homeA.getBoundingClientRect();
-        meas.current.targetX = r.left + r.width / 2;
-        meas.current.targetY = r.top  + r.height / 2;
+        meas.current.targetX = r.left + cssW / 2;
+        meas.current.targetY = r.top  + cssH / 2;
     }
 
     meas.current.centerX = sx;
-    meas.current.centerY = sy;
-    const base = 220; 
-    meas.current.startScale = (sWidth && sWidth > 0) ? (base / sWidth) : 1;
+    meas.current.centerY = sy; 
+    meas.current.startScale = sWidth ? (base / sWidth) : 1;
 
-
+    meas.current.endScale = cssW / base;
 
     const heroH = hero ? hero.getBoundingClientRect().height : vh * 0.8;
     meas.current.travel = Math.max(240, heroH * 0.85); 
@@ -60,17 +66,27 @@ export default function MorphingLogo({
             requestAnimationFrame(() => setTimeout(measure, 80));
         };
 
+        const onResize = () => {
+          measure(); 
+          const evt = new Event("scroll");
+          window.dispatchEvent(evt);
+        };
+
         init();
-        window.addEventListener("resize", measure, { passive: true });
+        window.addEventListener("resize", onResize, { passive: true });
 
         // also re-measuring when the landing image finishes loading (important in Vite)
         const logoImgEl = document.getElementById("riw-logo-start");
+        let obs;
         if (logoImgEl) {
-            const obs = new ResizeObserver(() => measure());
+            obs = new ResizeObserver(() => measure());
             obs.observe(logoImgEl);
         }
 
-        return () => window.removeEventListener("resize", measure);
+        return () => {
+          window.removeEventListener("resize", onResize);
+          if (obs) obs.disconnect();
+        };
     }, []);
 
     useEffect(() => {
@@ -100,7 +116,10 @@ export default function MorphingLogo({
         else if (t > fadeInStart) opacity = (t - fadeInStart) / (fadeInEnd - fadeInStart);
 
         const s0 = meas.current.startScale ?? startScale;
-        const s  = s0 + (endScale - s0) * t;
+        const eS = (meas.current.endScale ?? (meas.current.targetW ? meas.current.targetW / (parseFloat(getComputedStyle(document.documentElement)
+                    .getPropertyValue("--logo-base-w")) || 220)
+                    : endScale));
+        const s = s0 + (eS - s0) * t;
 
         if (btnRef.current) {
             btnRef.current.style.opacity = String(opacity);
@@ -109,6 +128,10 @@ export default function MorphingLogo({
             btnRef.current.dataset.docked = t >= completeAt ? "true" : "false";
         }
         });
+        if (meas.current.targetW && meas.current.targetH){
+          document.documentElement.style.setProperty("--logo-nav-w", `${meas.current.targetW}px`);
+          document.documentElement.style.setProperty("--logo-nav-h", `${meas.current.targetH}px`);
+        }
     };
 
     const bind = (el) => {

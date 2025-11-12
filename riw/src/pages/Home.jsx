@@ -6,14 +6,16 @@ export default function Home(){
   return (
     <div className="container">
       {/* Ribbon under navbar */}
-      <div className="popular-ribbon" role="navigation" aria-label="Popular searches">
-        <h2 className="popular-title">Popular Searches</h2>
-        <div className="popular-pills">
-          {POPULAR.map((label) => (
-            <a key={label} href="#home" className="pill" role="button" aria-label={`${label} (coming soon)`}>
-              {label}
-            </a>
-          ))}
+      <div className="popular-bleed" role="navigation" aria-label="Popular searches">
+        <div className="container popular-ribboon">
+          <h2 className="popular-title">Popular Searches</h2>
+          <div className="popular-pills">
+            {POPULAR.map(label => (
+              <a key={label} href="#home" className="pill" role="button" aria-label={`${label} (coming soon)`}>
+                {label}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
 

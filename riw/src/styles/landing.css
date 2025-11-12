@@ -6,7 +6,10 @@
   padding: 8vh 18px 10vh;
 }
 .landing-logo-wrap{
-  display: flex;
+  position: relative;
+  display: inline-block;
+  margin: 0 auto;
+  /* display: flex;
   place-items: center;
   margin: 0 auto; 
   justify-content: center;
@@ -14,7 +17,7 @@
   width: 100%;
   max-width: none;
 
-  margin-left: 5vw;
+  margin-left: 5vw; */
 }
 
 /* Floating/morphing logo */
@@ -23,11 +26,13 @@
   position: absolute;
   left: 0; top: 0;
   z-index: 19;
-  width: 220px; height: 220px;
+  width: var(--logo-base-w);
+  height: var(--logo-base-w);
   border: 0; background: transparent; padding: 0;
   cursor: pointer;
   will-change: transform;
   transition: filter 200ms ease;
+  /* width: 220px; height: 220px; */
 }
 .riw-logo-floater img{
   display: block; width: 100%; height: 100%;
@@ -36,11 +41,25 @@
 }
 .riw-logo-floater[data-docked="true"] img{
   filter: drop-shadow(0 4px 14px rgba(0,0,0,.15));
+  width:  var(--logo-base-w);
+  height: var(--logo-base-w);
 }
 
-/* Logo morph positioning */
+#riw-logo-start{
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  /*debug
+  outline: 2px dashed rgba(0,140,255,.7); 
+  background: rgba(0,140,255,.08);
+  */
+
+} 
+
+/* Logo morph positioning
 :root{
-  --logo-t: 0;            /* 0..1 from MorphingLogo */
+  --logo-t: 0;           
   --mark-left: 20.5%;
   --mark-top: 46.0%;
   --mark-width: 18.0%;
@@ -54,10 +73,19 @@
   aspect-ratio: 1 / 1;
   transform: translate(-10%, 10%); 
   pointer-events: none;
-  /* debug:
   outline: 2px dashed rgba(0,140,255,.7); background: rgba(0,140,255,.08);
-  */
+
+} */
+
+
+
+#riw-logo-start,
+#riw-logo-start img {
+  width: var(--logo-base-w);
+  height: auto;
+  display: block;
 }
+
 
 .landing-logo{
   width: min(1000px, 90vw);
@@ -67,6 +95,7 @@
   pointer-events: none;
   display: block;
   margin: 0 auto;
+  margin-left: 10vw;
   opacity: calc(1 - var(--logo-t));
   transform: translateY(calc(var(--logo-t) * -12px));
   transition: opacity 220ms ease, transform 220ms ease;

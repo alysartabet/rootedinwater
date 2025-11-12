@@ -50,17 +50,18 @@ export default function Header({ scrollTargetSelector = ".riw-main" }){
             const h = (location.hash || "").replace("#", "");
             if (map.has(h)) setActive(map.get(h));
         };
+        window.addEventListener("hashchange", onHash, { passive: true });
 
-            return () => {
-                window.removeEventListener("hashchange", onHash);
-                io.disconnect();
-            };
+        return () => {
+            window.removeEventListener("hashchange", onHash);
+            io.disconnect();
+        };
     }, [scrollTargetSelector]);
     return(
         <header className="header" ref={headerRef}>
             <div className="container">
                 <nav className="nav" aria-label="Primary"> 
-                    <a href="#landing" className="nav-link home-link">
+                    <a href="#landing" className="nav-link home-link" data-key="home">
                         <span id="riw-home-anchor" className="home-anchor" aria-hidden="true" />
                         <span className="home-label">Home</span>
                     </a>
