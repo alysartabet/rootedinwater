@@ -55,10 +55,12 @@
   transform: translateY(76%);
   transition: transform .35s ease;
   padding: 14px 14px 44px;
+  visibility: hidden;
 }
 .update-card:hover .update-info,
 .update-card:focus-within .update-info{
   transform: translateY(0%);
+  visibility: visible;
 }
 .update-summary{ margin: 0 0 8px; color: #dcefe7; }
 .update-loc{ font-size: 13px; color: #9fb9ad; }
