@@ -2,6 +2,7 @@ import imgAgro from "../assets/articles/agro-forestry.jpg";
 import imgClimate from "../assets/articles/climate-resilient.jpg";
 import imgSoil from "../assets/articles/soil-microbiome.jpg";
 import imgWater from "../assets/articles/water-management.png";
+import { useState, useEffect, useRef } from "react";
 
 const POPULAR = [
   "Algae Blooms",
@@ -54,6 +55,57 @@ const UPDATES = [
 ];
 
 export default function Home() {
+
+  const [activeIndex, setActiveIndex] = useState(0);
+  const trackRef = useRef(null);
+  const slides = UPDATES;
+
+
+  /* Carousel track */
+  const scrollCarousel = (direction) => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    const card = track.querySelector(".update-card");
+    const cardWidth = card.offsetWidth + 18;
+
+    track.scrollBy({
+      left: direction * cardWidth,
+      behavior: "smooth"
+    });
+  };
+
+  
+// Detect slide while scrolling
+const updateActiveDot = () => {
+  const track = trackRef.current;
+  const card = track.querySelector(".update-card");
+  if (!track || !card) return;
+
+  const cardWidth = card.offsetWidth + 18;
+  const index = Math.round(track.scrollLeft / cardWidth);
+
+  setActiveIndex(index);
+};
+
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    const card = track.querySelector(".update-card");
+    const cw = card.offsetWidth + 18;
+
+ 
+    const onScroll = () => {
+      updateActiveDot();
+    };
+
+    track.addEventListener("scroll", onScroll);
+    return () => track.removeEventListener("scroll", onScroll);
+
+  }, []);
+
   return (
     <div className="container">
 
@@ -84,40 +136,46 @@ export default function Home() {
           <h2>Latest Updates</h2>
         </header>
 
-        <div className="updates-grid">
-          {UPDATES.map((u, i) => (
-            <article key={i} className="update-card">
+        <div className="updates-carousel">
 
-              <div className="update-media">
-                <img src={u.img} alt={u.title} loading="lazy" />
-              </div>
+          <button className="carousel-btn left" onClick={() => scrollCarousel(-1)}>‹</button>
 
-             
+          <div ref={trackRef} id="updatesTrack" className="updates-track">
+            {slides.map((u, i) => (
+              <article key={i} className="update-card">
 
-              {/* Hover/Focus reveal panel */}
-              <div className="update-info">
+                <div className="update-media">
+                  <img src={u.img} alt={u.title} loading="lazy" />
+                </div>
+
+                {/* Hover/Focus reveal panel */}
+                <div className="update-info">
                 <h3 className="update-title">{u.title}</h3>
 
-                <div className="update-meta">
+                <div className="meta-wrap">
                 <span className="badge">{u.keyword}</span>
-                <span className="dot" aria-hidden="true">•</span>
-                <time>{u.date}</time>
-                <span className="dot" aria-hidden="true">•</span>
+
+                <div className="update-meta">
                 <span className="authors">{u.authors}</span>
-              </div>
-                <p className="update-summary">{u.summary}</p>
-
-                <div className="update-footer">
-                <div className="update-loc">📍 {u.location}</div>
-
-                <button className="update-cta">
-                <span className="arrow">→</span>
-                </button>
-              </div>
+                <time className="update-date">⏱︎ {u.date}</time>
+                </div>
               </div>
 
-            </article>
-          ))}
+              <p className="update-summary">{u.summary}</p>
+                  <div className="update-footer">
+                    <div className="update-loc">📍 {u.location}</div>
+
+                    <button className="update-cta">
+                      <span className="arrow">→</span>
+                    </button>
+                  </div>
+                </div>
+
+              </article>
+            ))}
+          </div>
+
+          <button className="carousel-btn right" onClick={() => scrollCarousel(1)}>›</button>
         </div>
       </section>
 
