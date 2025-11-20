@@ -15,7 +15,7 @@
 
 /* ==== Latest Updates Grid ==== */
 .updates-grid {
-  display: grid;
+  display: none;
   gap: 18px;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 }
@@ -39,7 +39,7 @@
   padding: 6px 0;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  width: calc(280px * 3 + 18px * 2);
+  width: calc(280px * 3 + 18px * 2); /*to show 3 cards*/
 }
 
 .updates-track::-webkit-scrollbar {
@@ -54,22 +54,24 @@
   top: 50%;
   transform: translateY(-50%);
   width: 40px;
-  height: 40px;
+  height: 42px;
   border-radius: 50%;
   border: none;
-  background: rgba(255,255,255,0.6);
+  background: rgba(208, 207, 207, 0.853);
   backdrop-filter: blur(5px);
-  color: #0e1713;
+  color: #000000;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 22px;
+  font-size: 26px;
   cursor: pointer;
   transition: background .2s ease;
 }
 
 .carousel-btn:hover {
-  background: rgba(255,255,255,0.9);
+  background: rgba(151, 150, 150, 0.9);
+  transform: translateY(-50%) scale(1.1);
+  transition: transform 0.35s ease-in-out;
 }
 
 .carousel-btn.left {
@@ -113,7 +115,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 11px;
+  font-size: 13px;
   color: rgb(59, 59, 59);
   font-family: "Forum", serif;
   width:100%;
@@ -136,6 +138,22 @@
   margin-top: 4px;
 }
 
+.time-icon{
+  width:14px;
+  height:14px;
+}
+
+.location-icon{
+  width:11px;
+  height: 11px;
+}
+
+.update-date{
+  display: inline-flex;
+  align-items: center;
+  gap:4px ;
+}
+
  .badge {
   display: inline-block;
   padding: 2px 4px;
@@ -145,7 +163,7 @@
   border: 1px solid rgba(255,255,255,.12);
   font-weight: 200;
   white-space: nowrap;
-  font-size: 8px;
+  font-size: 9px;
 }
 
 .update-meta .dot {
@@ -196,6 +214,7 @@
   justify-content: space-between;
   align-items: center;
   padding-top: 8px;
+ 
 }
 
 
@@ -203,6 +222,8 @@
   font-size: 9px;
   color: rgb(59, 59, 59);
   font-family: "Inter", serif;
+  display: inline-flex;
+  gap: 4px;
 }
 
 .update-cta {
@@ -216,7 +237,7 @@
   display: grid;
   place-items: center;
   cursor: pointer;
-  flex-shrink: 0;            
+  flex-shrink: 0;          
 }
 
 
@@ -225,6 +246,7 @@
   line-height: 1;
 
 }
+
 
 
 /* ==== Regional Spotlight ==== */
@@ -415,8 +437,57 @@
   }
 }
 
-@media (max-width: 640px) {
-  .popular-ribbon {
+/*Half screen*/
+  @media (max-width:1024px){
+    .updates-carousel{
+      display:none;
+    }
+    .updates-grid{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+    .update-info {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(6px);
+    transform: translateY(46%);
+    transition: transform 0.35s ease;
+    padding: 14px;
+    padding-bottom: 13px;  
+      z-index: 1;
+}
+  }
+
+/*Small screen*/
+  @media (max-width: 640px) {
+.updates-carousel {
+  margin-inline: auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 12px;
+  gap: 16px;
+}
+
+
+  .updates-grid {
+    display: none;    
+  }
+
+  .updates-track {
+  width: 280px;
+  margin: 0 auto;
+}
+
+  .update-info{
+  transform: translateY(48%);
+  transition: transform 0.35s ease;
+  }
+    .popular-ribbon {
     grid-template-columns: 1fr;
   }
 }

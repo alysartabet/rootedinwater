@@ -157,14 +157,17 @@ const updateActiveDot = () => {
 
                 <div className="update-meta">
                 <span className="authors">{u.authors}</span>
-                <time className="update-date">⏱︎ {u.date}</time>
+                <time className="update-date">
+                  <img src="src/assets/icons/timeicon.svg" alt="" className ="time-icon"/>
+                  {u.date}</time>
                 </div>
               </div>
 
               <p className="update-summary">{u.summary}</p>
                   <div className="update-footer">
-                    <div className="update-loc">📍 {u.location}</div>
-
+                    <div className="update-loc">
+                      <img src="src/assets/icons/locationicon.svg" alt="" className="location-icon"/>
+                       {u.location}</div>
                     <button className="update-cta">
                       <span className="arrow">→</span>
                     </button>
@@ -177,6 +180,49 @@ const updateActiveDot = () => {
 
           <button className="carousel-btn right" onClick={() => scrollCarousel(1)}>›</button>
         </div>
+
+        {/*Half-screen grid*/}
+        <div className="updates-grid">
+          {slides.map((u, i) => (
+            <article key={i} className="update-card">
+
+              <div className="update-media">
+                <img src={u.img} alt={u.title} loading="lazy" />
+              </div>
+
+              <div className="update-info">
+                <h3 className="update-title">{u.title}</h3>
+
+                <div className="meta-wrap">
+                  <span className="badge">{u.keyword}</span>
+
+                  <div className="update-meta">
+                    <span className="authors">{u.authors}</span>
+                    <time className="update-date">
+                      <img src="src/assets/icons/timeicon.svg" alt="" className="time-icon" />
+                      {u.date}
+                    </time>
+                  </div>
+                </div>
+
+                <p className="update-summary">{u.summary}</p>
+
+                <div className="update-footer">
+                  <div className="update-loc">
+                    <img src="src/assets/icons/locationicon.svg" alt="" className="location-icon" />
+                    {u.location}
+                  </div>
+
+                  <button className="update-cta">
+                    <span className="arrow">→</span>
+                  </button>
+                </div>
+              </div>
+
+            </article>
+          ))}
+        </div>
+
       </section>
 
       {/* Regional Spotlight */}
