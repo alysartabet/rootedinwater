@@ -1,12 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Forum&display=swap');
-
 /* ==== Home Screen === */
 /* Sections */
-
-* {
-  font-family: "Forum", serif;
-}
-
 
 .home-section {
   margin: 36px 0 28px;
@@ -14,8 +7,7 @@
 
 .section-head h2 {
   margin: 0 0 14px;
-  
-  /*font-family: "Cormorant Unicase", serif; */
+  font-family: "Cormorant Unicase", serif;
   font-weight: 700;
   letter-spacing: .02em;
 }
@@ -28,6 +20,67 @@
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 }
 
+/* Carousel */
+.updates-carousel {
+  margin-inline: auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 12px;
+  gap: 16px;
+}
+
+/* Scroll trakc */
+.updates-track {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 6px 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  width: calc(280px * 3 + 18px * 2);
+}
+
+.updates-track::-webkit-scrollbar {
+  display: none;
+}
+
+
+/*  Carousel arrows  */
+.carousel-btn {
+  position: relative;
+  z-index: 5;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(5px);
+  color: #0e1713;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  cursor: pointer;
+  transition: background .2s ease;
+}
+
+.carousel-btn:hover {
+  background: rgba(255,255,255,0.9);
+}
+
+.carousel-btn.left {
+  left: -5px;
+}
+
+.carousel-btn.right {
+  right: -5px;
+}
+
+
 .update-card {
   position: relative;
   overflow: hidden;
@@ -35,6 +88,10 @@
   background: rgba(255,255,255,.08);
   border: 1px solid rgba(255,255,255,.10);
   min-height: 260px;
+  scroll-snap-align: start;
+  flex: 0 0 280px; 
+  display: flex;
+  flex-direction: column;
 }
 
 .update-media {
@@ -56,19 +113,39 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 14px 4px;
-  font-size: 10px;
+  font-size: 11px;
   color: rgb(59, 59, 59);
+  font-family: "Forum", serif;
+  width:100%;
+  justify-content: space-between;
+  margin-top:4px;
+  padding:0;
 }
 
-.update-meta .badge {
+.update-meta .authors{
+  margin: 0;
+}
+
+.update-meta .update-date{
+  white-space: nowrap;
+  margin-left: auto;
+}
+
+.meta-wrap {
+  padding: 0 4px;      
+  margin-top: 4px;
+}
+
+ .badge {
   display: inline-block;
-  padding: 2px 5px;
+  padding: 2px 4px;
   border-radius: 999px;
   background: #316765;
   color: #c5eedb;
   border: 1px solid rgba(255,255,255,.12);
-  font-weight: 300;
+  font-weight: 200;
+  white-space: nowrap;
+  font-size: 8px;
 }
 
 .update-meta .dot {
@@ -76,12 +153,13 @@
 }
 
 .update-title {
-  padding: 14px 0 10px;
+  padding: 6px 0 4px;
   margin: 0;
-  font-size: clamp(10px, 2.1vw, 16px);
-  font-weight: 550;
+  font-size: clamp(10px, 2.1vw, 15px);
+  font-weight: 520;
   color: #0e1713;
   position: relative;
+  font-family: "Inter", serif;
 }
 
 
@@ -94,11 +172,11 @@
   bottom: 0;
   background: rgba(255,255,255,0.6);
   backdrop-filter: blur(6px);
-  transform: translateY(52%);
+  transform: translateY(45%);
   transition: transform 0.35s ease;
   padding: 14px;
-  padding-bottom: 20px;  
-  z-index: 2;
+  padding-bottom: 13px;  
+  z-index: 1;
 }
 
 .update-card:hover .update-info,
@@ -109,26 +187,28 @@
 .update-summary {
   margin: 0 0 px;
   color: rgb(59, 59, 59);
-  font-size: 14px;
+  font-size: 13px;
+  font-family: "Forum", serif;
 }
 
 .update-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 14px;
+  padding-top: 8px;
 }
 
 
 .update-loc {
-  font-size: 10px;
+  font-size: 9px;
   color: rgb(59, 59, 59);
+  font-family: "Inter", serif;
 }
 
 .update-cta {
   position: static;         
-  width: 30px;
-  height: 30px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   border: 1px solid rgb(59, 59, 59);
   background: transparent;
@@ -141,7 +221,7 @@
 
 
 .update-cta .arrow {
-  font-size: 15px;
+  font-size: 10px;
   line-height: 1;
 
 }
