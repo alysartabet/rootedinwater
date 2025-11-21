@@ -235,34 +235,57 @@ const updateActiveDot = () => {
 
       </section>
 
-      {/* Regional Spotlight */}
-      <section className="home-section">
-        <header className="section-head">
-          <h2>Regional Spotlight</h2>
-        </header>
+{/* Regional Spotlight */}
+<section className="home-section">
+  <header className="section-head">
+    <h2>Regional Spotlight</h2>
+  </header>
 
-        <div className="spotlight">
-          <div className="spotlight-row">
+  <div className="rs-card">
 
-            <div className="kpi">
-              <div className="kpi-num" style={{ color: "rgb(25,45,43)" }}>10</div>
-              <div className="kpi-label" style={{ color: "rgb(25,45,43)" }}>Active Research Sites</div>
-            </div>
+    <h3 className="rs-title">Finger Lakes Watershed Study</h3>
+    <p className="rs-subhead">
+      Current season monitoring across tributaries and shore farms.
+    </p>
 
-            <div className="kpi">
-              <div className="kpi-num" style={{ color: "rgb(25,45,43)" }}>89</div>
-              <div className="kpi-label" style={{ color: "rgb(25,45,43)" }}>Datasets Available</div>
-            </div>
+    {/* Map */}
+    <div className="rs-map-wrap">
+      <img
+        src="/src/assets/fingerlakesimg.png"
+        alt="Finger Lakes Watershed Map"
+        className="rs-map"
+      />
+    </div>
 
-          </div>
+    {/* CTA */}
+    <button className="rs-cta" onClick={() => 
+      { document.querySelector("#maps").scrollIntoView({ behavior: "smooth" });}}>
+        Explore the Full Map
+        </button>
 
-          <p className="spotlight-blurb" style={{ color: "rgb(25,45,43)" }}>
-            Finger Lakes Watershed Study — current season monitoring across tributaries and shore farms.
-          </p>
+    {/* Description */}
+    <p className="rs-desc">
+      Monitoring water quality impacts from agricultural practices. This 
+      comprehensive study includes 45 farms and 15 research stations across 
+      the watershed.
+    </p>
 
-          <a className="btn" href="#maps" role="button">Explore the Full Map</a>
-        </div>
-      </section>
+    {/* KPI Grid */}
+    <div className="rs-kpi-grid">
+      <div className="rs-kpi">
+        <div className="rs-kpi-num">10</div>
+        <div className="rs-kpi-label">Active Research Sites</div>
+      </div>
+
+      <div className="rs-kpi">
+        <div className="rs-kpi-num">89</div>
+        <div className="rs-kpi-label">Datasets Available</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 
       {/* Data Insights */}
       <section className="home-section">

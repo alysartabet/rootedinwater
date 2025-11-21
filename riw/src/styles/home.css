@@ -261,50 +261,116 @@
 
 
 /* ==== Regional Spotlight ==== */
-.spotlight {
-  padding: 16px;
-  border: 1px solid rgba(255,255,255,.10);
-  border-radius: 16px;
-  background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.04));
-}
-
-.spotlight-row {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 14px;
-  margin-bottom: 10px;
-}
-
-.kpi {
-  text-align: center;
-  padding: 10px;
-}
-
-.kpi-num {
-  font-size: 34px;
-  font-weight: 800;
-  color: #8ddab7;
-}
-
-.kpi-label {
-  color: #cfe3da;
-}
-
-.spotlight-blurb {
-  color: #cfe3da;
-  margin: 6px 0 12px;
-}
-
-.btn {
-  display: inline-block;
-  padding: 10px 14px;
-  border-radius: 10px;
-  background: #8ddab7;
-  color: #0e1713;
-  text-decoration: none;
+.rs-title {
+  font-family: "Inter", serif;
+  font-size: 20px;
   font-weight: 700;
+  color: #0e1713;
+  margin-bottom: 6px;
+}
+.rs-subhead {
+  font-size: 14px;
+  color: #2e4540;
+  margin-top: -4px;
+  margin-bottom: 18px;
+  font-family: "Cormorant Garamond", serif;
+  letter-spacing: .02em;
 }
 
+.rs-card{
+  background:rgba(255,255,255,0.4);
+  border-radius: 16px;
+  padding: 32px 28px;
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0,0,0,.06);
+  box-shadow: 0 4px 18px rgba(0,0,0,.08);
+}
+
+.rs-map-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.rs-map {
+  
+  border-radius: 8px;
+  object-fit: contain;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+.rs-map-wrap{
+  position: relative;
+  height: 200px;
+}
+
+
+/* CTA button */
+.rs-cta {
+  display: block;
+  width:fit-content;
+  margin: 10px 0 20px auto;
+  padding: 8px 20px;
+  border-radius: 8px;
+  border: 1px solid #bcd2c9;
+  background: white;
+  cursor: pointer;
+  font-size: 12px;
+  font-family: "Inter", sans-serif;
+  font-style: italic;
+  transition: all .2s ease;
+}
+
+.rs-cta:hover {
+  background: #f8f8f8;
+  transform: translateY(-1px);
+}
+
+/* Description */
+.rs-desc {
+  margin: 0 auto 22px;
+  font-size: 15px;
+  font-family: "Forum", serif;
+  line-height: 1.45;
+  color: #2c3e36;
+  max-width: 520px;
+}
+/* KPI boxes */
+.rs-kpi-grid {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  margin-top: 18px;
+}
+
+.rs-kpi {
+  background: rgba(255,255,255,0.92);
+  padding: 8px 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.06);
+
+  flex: 1;
+  max-width: 240px;
+  text-align: center;
+}
+
+.rs-kpi-num {
+  font-size: 24px;
+  font-weight: 700;
+  font-family: "Cormorant Unicase", serif;
+  color: #776351;
+  margin-bottom: 4px;
+}
+
+.rs-kpi-label {
+  font-size: 13px;
+  font-family: "Cormorant Unicase", serif;
+  color: #415047;
+}
 
 /* ==== Data Insights ==== */
 .insights {

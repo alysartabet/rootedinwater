@@ -10,7 +10,7 @@
   left: 50%;
   transform: translate3d(-50%, var(--bg-shift, 0px), 0);
   width: 110vw;
-  height: 150vh;
+  height: 500vh;
   object-fit: cover;
   z-index: -1;
   pointer-events: none;
