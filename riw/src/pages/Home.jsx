@@ -2,6 +2,9 @@ import imgAgro from "../assets/articles/agro-forestry.jpg";
 import imgClimate from "../assets/articles/climate-resilient.jpg";
 import imgSoil from "../assets/articles/soil-microbiome.jpg";
 import imgWater from "../assets/articles/water-management.png";
+import wheaticon from "../assets/icons/wheaticon.png";
+import toolsicon from "../assets/icons/toolsicon.png";
+import microscopeicon from "../assets/icons/microscopeicon.png";
 import { useState, useEffect, useRef } from "react";
 
 const POPULAR = [
@@ -53,6 +56,46 @@ const UPDATES = [
       "Cool-night tolerant lines out-performed baselines under late-spring frost and early-fall heat spikes across 12 sites."
   }
 ];
+
+const COMMUNITY_POSTS = [
+  {
+    avatar: "T",
+    name: "Tom Stevens",
+    tag: "Farmer",
+    date: "Sep 13",
+    title: "Early Signs of Spring: What Our Water Data is Telling Us",
+    location: "Finger Lakes Region",
+    keyword:"Field Update",
+    icon: wheaticon,
+    summary:
+    "Our water monitoring stations are showing promising trends as we enter the growing season, consistently high dissolved oxygen levels across the region."
+  },
+  {
+    avatar: "L",
+    name: "Dr. Lisa Martinez",
+    tag: "Researcher",
+    date: "Aug 22",
+    title: "Cover Crop Success Story: Reducing Runoff by 40%",
+    location: "Wayne County, NY",
+    keyword:"Practice Share",
+    icon: toolsicon,
+    summary: "A three-year study on our farm shows cover crops can dramatically reduce nutrient runoff while improving soil health."
+  },
+  {
+    avatar: "A",
+    name: "Alex Chen",
+    tag: "Student",
+    date: "Aug 15",
+    title: "Student Research: Algae Blooms and Agricultural Practices in Cayuga Lake Basin",
+    location: "Cayuga Lake Basin",
+    keyword:"Reflection",
+    icon: microscopeicon,
+    summary: "Undergraduate research reveals how buffer strips can significantly reduce nutrients that contribute to harmful algae blooms."
+  }
+];
+
+
+
 
 export default function Home() {
 
@@ -234,58 +277,98 @@ const updateActiveDot = () => {
         </div>
 
       </section>
+      <section className="home-section rs-community-wrap">
+         <div className="rs-community-grid">
 
-{/* Regional Spotlight */}
-<section className="home-section">
-  <header className="section-head">
-    <h2>Regional Spotlight</h2>
-  </header>
+       {/* Left Column Regional Spotlight */}
+       <div className="rs-left-col">
+        <h2 className="rs-spotlight-title">Regional Spotlight</h2>
+        <div className="rs-card">
+          <h3 className="rs-title">Finger Lakes Watershed Study</h3>
+          <p className="rs-subhead">
+          Current season monitoring across tributaries and shore farms.
+          </p>
+          
+          <div className="rs-map-wrap">
+          <img
+            src="/src/assets/fingerlakesimg.png"
+            alt="Finger Lakes Watershed Map"
+            className="rs-map"
+          />
+         </div>
 
-  <div className="rs-card">
-
-    <h3 className="rs-title">Finger Lakes Watershed Study</h3>
-    <p className="rs-subhead">
-      Current season monitoring across tributaries and shore farms.
-    </p>
-
-    {/* Map */}
-    <div className="rs-map-wrap">
-      <img
-        src="/src/assets/fingerlakesimg.png"
-        alt="Finger Lakes Watershed Map"
-        className="rs-map"
-      />
-    </div>
-
-    {/* CTA */}
-    <button className="rs-cta" onClick={() => 
-      { document.querySelector("#maps").scrollIntoView({ behavior: "smooth" });}}>
-        Explore the Full Map
+        <button
+          className="rs-cta"
+          onClick={() =>
+            document.querySelector("#maps").scrollIntoView({ behavior: "smooth" })}>
+          Explore the Full Map
         </button>
 
-    {/* Description */}
-    <p className="rs-desc">
-      Monitoring water quality impacts from agricultural practices. This 
-      comprehensive study includes 45 farms and 15 research stations across 
-      the watershed.
-    </p>
+        <p className="rs-desc">
+          Monitoring water quality impacts from agricultural practices. This
+          comprehensive study includes 45 farms and 15 research stations across
+          the watershed.
+        </p>
 
-    {/* KPI Grid */}
-    <div className="rs-kpi-grid">
-      <div className="rs-kpi">
-        <div className="rs-kpi-num">10</div>
-        <div className="rs-kpi-label">Active Research Sites</div>
+        <div className="rs-kpi-grid">
+          <div className="rs-kpi">
+            <div className="rs-kpi-num">10</div>
+            <div className="rs-kpi-label">Active Research Sites</div>
+          </div>
+
+          <div className="rs-kpi">
+            <div className="rs-kpi-num">89</div>
+            <div className="rs-kpi-label">Datasets Available</div>
+          </div>
+        </div>
       </div>
+    </div>
 
-      <div className="rs-kpi">
-        <div className="rs-kpi-num">89</div>
-        <div className="rs-kpi-label">Datasets Available</div>
+    {/* Right Column RIW Community */}
+    <div className="rs-right-col">
+      <div className="community-card">
+
+        <h3 className="community-title">RIW Community</h3>
+
+        <div className="community-feed">
+          {COMMUNITY_POSTS.map((post, i) => (
+            <div key={i} className="comm-post">
+              <div className="comm-header">
+                <div className="avatar">{post.avatar}</div>
+                <div className="info">
+                  <div className="name">{post.name}</div>
+                  <div className={`tag tag-${post.tag.toLowerCase()}`}>{post.tag}</div>
+
+                </div>
+                <div className="date">{post.date}</div>
+              </div>
+
+              <div className="comm-title">
+               <img src={post.icon} alt="" className="comm-title-icon" />
+               {post.title}
+              </div>
+
+
+              <div className="comm-summary">{post.summary}</div>
+
+              <div className="comm-location">
+                <img src="/src/assets/icons/locationicon.svg" />
+                {post.location}
+              </div>
+              <span className="post-badge">{post.keyword}</span>
+
+              <button className="comm-cta">→</button>
+            </div>
+          ))}
+        </div>
+
+        <button className="view-all">View All Posts →</button>
+
       </div>
     </div>
 
   </div>
 </section>
-
 
       {/* Data Insights */}
       <section className="home-section">
@@ -324,36 +407,59 @@ const updateActiveDot = () => {
         </div>
       </section>
 
-      {/* Our Mission */}
-      <section className="home-section mission">
-        <header className="section-head">
-          <h2>Our Mission</h2>
-        </header>
+      {/* Our Mission & Subscribe*/}
+      <section className="mission-subscribe-wrap">
+        <div className="mission-subscribe-grid">
 
-        <p style={{ color: "rgb(25,45,43)" }}>
-          Rooted In Water connects researchers, growers, and communities to advance
-          resilient, evidence-based agriculture. We bridge datasets and field practice
-          to turn observations into action.
+      {/* Subscribe Card */}
+      <div className="subscribe-card">
+        <h2 className="sub-title">Stay Connected with RIW</h2>
+        <p className="sub-subtitle">Subscribe to Our <br/> Newsletter</p>
+        <p className="sub-text">
+        Get weekly insights on sustainable agriculture research, water quality updates,
+        and community stories delivered to your inbox.
         </p>
-      </section>
 
-      {/* Stay Connected */}
-      <section className="home-section">
-        <header className="section-head">
-          <h2>Stay Connected</h2>
-        </header>
+      <form
+        className="subscribe"
+        onSubmit={(e) => {
+          e.preventDefault();
+          alert("work in progress lol");
+        }}
+      >
+        <input type="email" placeholder="Enter your email address" />
+        <button type="submit">Subscribe</button>
+      </form>
 
-        <form
-          className="subscribe"
-          onSubmit={(e) => {
-            e.preventDefault();
-            alert("Subscribed!");
-          }}
-        >
-          <input type="email" placeholder="you@example.com" aria-label="Email address" />
-          <button type="submit">Subscribe</button>
-        </form>
-      </section>
+      <p className="privacy-note">
+        We respect your privacy. Unsubscribe at any time.
+      </p>
+    </div>
+
+    {/* Mission Text */}
+    <div className="mission-card">
+      <h2 className="mission-title">Our Mission</h2>
+
+      <p className="mission-text">
+        Rooted In Water is <span className="mission-highlight">Rooted in Culture</span>
+      </p>
+
+      <p className="mission-body">
+        Sustainability is more than science and data, it is culture. We are committed
+        to connecting cutting-edge research with lived experiences, uniting students,
+        farmers, and researchers around water-quality data, agricultural practices,
+        and community knowledge.
+      </p>
+
+      <p className="mission-body">
+        Resilience comes not only from technology, but also from the cultural roots
+        that guide how we care for our land and water. Together, we’re cultivating a more
+        sustainable future.
+      </p>
+    </div>
+
+  </div>
+</section>
 
     </div>
   );
