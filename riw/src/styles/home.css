@@ -10,8 +10,19 @@
   font-family: "Cormorant Unicase", serif;
   font-weight: 700;
   letter-spacing: .02em;
+  text-align: center;
+  color:#444B46;
 }
 
+.section-sub {
+  margin-top: -6px;
+  margin-bottom: 14px;
+  font-size: 15px;
+  font-family: "Forum", serif;
+  color: #444B46;
+  text-align: center;
+  line-height: 1.45;
+}
 
 /* ==== Latest Updates Grid ==== */
 .updates-grid {
@@ -373,69 +384,88 @@
   transform: translateX(-50%);
 
   background: linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.75));
-  border-top: 1px solid rgba(0,0,0,.06);
+  border-top: 3px solid #2E8382;
   border-bottom: 1px solid rgba(0,0,0,.06);
   box-shadow: 0 2px 12px rgba(0,0,0,.07) inset;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .popular-ribbon {
-  margin-top: 8px;
-  margin-bottom: 10px;
-  padding: 10px 8px;
 
-  border: 1px solid rgba(0,0,0,.05);
+  /*border: 1px solid rgba(0,0,0,.05);
   border-radius: 10px;
 
   background: rgba(255,255,255,0.82);
   box-shadow: 0 2px 10px rgba(0,0,0,.06);
+*/
 
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 12px;
+  display: flex;
+  gap: 30px;
   align-items: center;
+  justify-content: space-between;
+}
+
+
+
+.popular-bleed .container {
+  text-align: left !important;
 }
 
 .popular-title {
   margin: 0 8px 0 4px;
   font-family: "Cormorant Garamond", serif;
   font-weight: 600;
-  font-size: clamp(16px, 2vw, 22px);
-  color: #6e8882;
+  font-size: 25px;
+  color: #34797B;
   letter-spacing: .04em;
+  text-align: center;
+  width:auto;
+  margin: 0;
 }
 
 .popular-pills {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 80px;
+  
 }
 
 .pill {
-  display: inline-block;
-  padding: 8px 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 6px 20px !important;
   border-radius: 999px;
 
-  font-size: clamp(14px, 1.8vw, 18px);
+  font-size: 16px;
+  font-weight: 400;
+  font-family:"Cormorant Garamond", serif;
   text-decoration: none;
 
   background: #ffffff;
-  color: #2c5c5e;
-  border: 1px solid #dfe8e6;
+  color: black !important;
+  border: 0.5px solid #34797B;
+  border-width: 0.35px !important;
   box-shadow: 0 1px 4px rgba(0,0,0,.06);
+  transition: all 0.25s ease;
 }
+
 
 .pill:hover {
-  background: #f8fbfa;
-  border-color: #cfe1dd;
+background: rgba(255,255,255,0.9);
+border-color: rgba(110, 136, 130, 0.55);
 }
 
+/* 
 @supports (position: sticky) {
   .popular-bleed {
     position: sticky;
     top: var(--header-h, 64px);
     z-index: 9;
   }
-}
+}*/
 
 /*Half screen*/
   @media (max-width:1024px){
@@ -460,6 +490,15 @@
     padding-bottom: 13px;  
       z-index: 1;
 }
+  .popular-pills{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 20px 80px;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
   }
 
 /*Small screen*/
@@ -490,4 +529,35 @@
     .popular-ribbon {
     grid-template-columns: 1fr;
   }
+
+  .pill {
+  
+  padding: 12px 20px;
+  border-radius: 999px;
+
+  font-size: 13px !important;
+  font-weight: 400;
+  font-family:"Cormorant Garamond", serif;
+  text-decoration: none;
+  color:#000000;
+
+}
+
+.popular-title {
+  font-size: 20px;
+}
+.popular-bleed {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+  .popular-pills{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 20px 50px;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
 }

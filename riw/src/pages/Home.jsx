@@ -110,30 +110,40 @@ const updateActiveDot = () => {
     <div className="container">
 
       {/* Ribbon under navbar */}
-      <div className="popular-bleed" role="navigation" aria-label="Popular searches">
-        <div className="container popular-ribboon">
-          <h2 className="popular-title">Popular Searches</h2>
+ <div className="popular-bleed" role="navigation" aria-label="Popular Searches">
+  <div className="container popular-ribbon">
 
-          <div className="popular-pills">
-            {POPULAR.map(label => (
-              <a
-                key={label}
-                href="#home"
-                className="pill"
-                role="button"
-                aria-label={`${label} (coming soon)`}
-              >
-                {label}
-              </a>
-            ))}
-          </div>
-        </div>
+    <div className="popular-title-wrap">
+      <h2 className="popular-title">Popular Searches</h2>
+    </div>
+
+    <div className="popular-pills-wrap">
+      <div className="popular-pills">
+        {POPULAR.map(label => (
+          <a
+            key={label}
+            href="#home"
+            className="pill"
+            role="button"
+            aria-label={`${label} (coming soon)`}
+          >
+            {label}
+          </a>
+        ))}
       </div>
+    </div>
+
+  </div>
+</div>
+
 
       {/* Latest Updates */}
       <section className="home-section">
         <header className="section-head">
           <h2>Latest Updates</h2>
+          <p className="section-sub">
+            Stay informed with the latest research, community insights, and alerts
+          </p>
         </header>
 
         <div className="updates-carousel">
