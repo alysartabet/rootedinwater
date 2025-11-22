@@ -412,6 +412,7 @@
   font-size:25px;
   font-weight: 700;
   color:#444B46;
+  margin-top: 0;
   margin-bottom: 16px;
   text-align: center;
 }
@@ -743,6 +744,8 @@
 
 .mission-card {
   padding: 20px;
+  padding-top: 0;
+  
 }
 
 .mission-title {
@@ -902,6 +905,15 @@ border-color: rgba(110, 136, 130, 0.55);
     overflow: hidden;
     text-overflow: ellipsis;
   }
+
+  /*Mission/Subscribe*/
+ .mission-subscribe-grid{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
   }
 
 /*Small screen*/
@@ -1033,6 +1045,14 @@ border-color: rgba(110, 136, 130, 0.55);
   .tag {
     font-size: 9px;
     padding: 1px 6px;
+  }
+
+  /*Mission/Subscribe*/
+  .mission-subscribe-grid{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 }
 
