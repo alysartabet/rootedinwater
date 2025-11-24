@@ -1,5 +1,10 @@
 /* === Footer === */
 
+footer.footer {
+  background: #1b3331 !important;
+}
+
+
 /*Link Columns*/
 .footer-links{
   display:grid; gap:28px;
@@ -13,7 +18,7 @@
   margin:0 0 6px;
   font-weight:600;
   font-size: clamp(18px, 2vw, 22px);
-  color:#e4ece7;
+  color:#fff;
 }
 .footer-col a{
   display:block;
@@ -115,4 +120,14 @@
   color:#c1cfc8;
   line-height:1.5;
   font-size: clamp(15px, 1.6vw, 18px);
+}
+
+.footer {
+  font-size: 0.93rem;        
+  transform: scale(0.93);    
+  transform-origin: top center;
+}
+
+.footer * {
+  zoom: 0.95; 
 }
