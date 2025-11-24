@@ -838,9 +838,8 @@
 }
 
 .pill {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr;
 
   padding: 6px 20px !important;
   border-radius: 999px;
