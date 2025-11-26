@@ -124,8 +124,6 @@ footer.footer {
 
 .footer {
   font-size: 0.93rem;        
-  transform: scale(0.93);    
-  transform-origin: top center;
 }
 
 .footer * {
