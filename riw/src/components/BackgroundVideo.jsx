@@ -10,14 +10,12 @@ export default function BackgroundVideo({
     const vidRef = useRef(null);
 
     //Making background video follow the scroll
-
     useEffect(() => {
         let raf = 0;
         let target;
-        let cleanup = () => {};
 
         const getScrollY = () => {
-            if (target && target != window)
+            if (target && target !== window)
                 return target.scrollTop || 0;
             return window.scrollY || 0;
         }
@@ -50,7 +48,6 @@ export default function BackgroundVideo({
 
     return(
         <video
-            ref={vidRef}
             className="riw-bg-video"
             autoPlay
             loop
@@ -64,9 +61,12 @@ export default function BackgroundVideo({
         </video>
     )
 
+}
 
-    /*
-    //Static Background (no parameters)
+
+
+/*
+    //Static Background (no parameters) used for testing
     return (
         <div className="bgvid-wrap" aria-hidden="true">
             <video 
@@ -84,4 +84,3 @@ export default function BackgroundVideo({
         </div>
     )
     */
-}

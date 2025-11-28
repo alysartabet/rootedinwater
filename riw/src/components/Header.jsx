@@ -1,21 +1,41 @@
-import React, {useEffect, useRef} from "react";
+import {useEffect, useRef} from "react";
+import {Link, useLocation} from "react-router-dom";
+
 import profileIcon from "../assets/icons/profileicon.svg";
 
+const SECTION_KEYS = ["home", "landing", "search", "maps", "data", "blog"];
 
-export default function Header({ scrollTargetSelector = ".riw-main" }){
-    const headerRef = useRef(null);
+const KEY_MAP = new Map([
+    ["home", "home"],
+    ["landing", "landing"],
+    ["search", "search"],
+    ["maps", "maps"],
+    ["data", "data"],
+    ["blog", "blog"],
+]);
+
+
+const NAV_ITEMS = [
+    { key: "home",   label: "Home",   to: "/" },
+    { key: "search", label: "Search", to: "/search" },
+    { key: "maps",   label: "Maps",   to: "/maps" },
+    { key: "data",   label: "Data",   to: "/data" },
+    { key: "blog",   label: "Blog",   to: "/blog" },
+]
+
+export default function Header(/*{ scrollTargetSelector = ".riw-main" }*/){
+    /*Hooks*/
+    /*const headerRef = useRef(null);*/
+    const location = useLocation();
+    let activeKey = "home"
+    if (location.pathname.startsWith("/search")) activeKey = "search";
+    else if (location.pathname.startsWith("/maps")) activeKey = "maps";
+    else if (location.pathname.startsWith("/data")) activeKey = "data";
+    else if (location.pathname.startsWith("/blog")) activeKey = "blog";
+    /*
     useEffect(() => {
         const scroller = document.querySelector(scrollTargetSelector) || window;
         const links = headerRef.current?.querySelectorAll("[data-key]") || [];
-
-        const map = new Map([
-            ["home", "home"],
-            ["landing", "home"],
-            ["search", "search"],
-            ["maps", "maps"],
-            ["data", "data"],
-            ["blog", "blog"],
-        ]);
 
         //helper for marking active 
         const setActive = (key) => {
@@ -35,20 +55,20 @@ export default function Header({ scrollTargetSelector = ".riw-main" }){
                 .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
             if (!top) return;
             const id = top.target.id;
-            const key = map.get(id);
+            const key = KEY_MAP.get(id);
             if (key) setActive(key);
             },
             { threshold: [0.25, 0.5, 0.75] }
         );
 
-        ["home", "landing", "search", "maps", "data", "blog"].forEach((id) => {
+        SECTION_KEYS.forEach((id) => {
             const el = document.getElementById(id);
             if (el) io.observe(el);
         });
 
         const onHash = () => {
             const h = (location.hash || "").replace("#", "");
-            if (map.has(h)) setActive(map.get(h));
+            if (KEY_MAP.has(h)) setActive(KEY_MAP.get(h));
         };
         window.addEventListener("hashchange", onHash, { passive: true });
 
@@ -56,10 +76,43 @@ export default function Header({ scrollTargetSelector = ".riw-main" }){
             window.removeEventListener("hashchange", onHash);
             io.disconnect();
         };
-    }, [scrollTargetSelector]);
+    }, [scrollTargetSelector]);*/
     return(
-        <header className="header" ref={headerRef}>
+        <header className="header">
             <div className="container">
+                <nav className="nav" aria-label="Primary">
+                    {NAV_ITEMS.map((item) => (
+                        <Link
+                            key={item.key}
+                            to={item.to}
+                            className={
+                                "nav-link" + (activeKey === item.key ? " is-active" : "")
+                            }
+                            data-key={item.key}
+                        >
+                            {item.key === "home" ? (
+                                <>
+                                    <span
+                                    id="riw-home-anchor"
+                                    className="home-anchor"
+                                    aria-hidden="true"
+                                    />
+                                    <span className="home-label">{item.label}</span>
+                                </>
+                            ) : (
+                                item.label
+                            )}
+                        </Link>
+                    ))}
+
+                    <div className="nav-spacer" aria-hidden />
+
+                    <Link to="/account/sign-in" className="nav-auth">
+                        <img className="nav-auth-icon" src={profileIcon} alt="" />
+                        <span>Sign In/Up</span>
+                    </Link>
+                </nav>
+                {/*
                 <nav className="nav" aria-label="Primary"> 
                     <a href="#landing" className="nav-link home-link" data-key="home">
                         <span id="riw-home-anchor" className="home-anchor" aria-hidden="true" />
@@ -76,20 +129,8 @@ export default function Header({ scrollTargetSelector = ".riw-main" }){
                         <img className="nav-auth-icon" src={profileIcon} alt="" />
                         <span>Sign In/Up</span>
                     </a>
-
-
-
-                    {/* old
-                    <a href="#landing" className="nav-link home-link">
-                        <span id="riw-home-anchor" className="home-anchor" aria-hidden="true" />
-                        <span className="home-label">Home</span>
-                    </a>
-                    <a href="#home" className="nav-link">Search</a>
-                    <a href="#home" className="nav-link">Maps</a>
-                    <a href="#home" className="nav-link">Data</a>
-                    <a href="#home" className="nav-link">Blog</a>
-                    */}
                 </nav>
+                */}
             </div>
         </header>
     )

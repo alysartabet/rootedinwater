@@ -1,12 +1,16 @@
+import { useState, useEffect, useRef } from "react";
+
 import imgAgro from "../assets/articles/agro-forestry.jpg";
 import imgClimate from "../assets/articles/climate-resilient.jpg";
 import imgSoil from "../assets/articles/soil-microbiome.jpg";
 import imgWater from "../assets/articles/water-management.png";
+import timeIcon from "../assets/icons/timeicon.svg";
+import locationIcon from "../assets/icons/locationicon.svg";
 import wheaticon from "../assets/icons/wheaticon.png";
 import toolsicon from "../assets/icons/toolsicon.png";
 import microscopeicon from "../assets/icons/microscopeicon.png";
-import { useState, useEffect, useRef } from "react";
 
+//Static Data
 const POPULAR = [
   "Algae Blooms",
   "Hydroponics",
@@ -95,16 +99,14 @@ const COMMUNITY_POSTS = [
 ];
 
 
-
-
 export default function Home() {
-
+  /*Hooks*/
   const [activeIndex, setActiveIndex] = useState(0);
   const trackRef = useRef(null);
   const slides = UPDATES;
 
-
-  /* Carousel track */
+  /*Helpers*/
+  // Carousel track
   const scrollCarousel = (direction) => {
     const track = trackRef.current;
     if (!track) return;
@@ -117,29 +119,30 @@ export default function Home() {
       behavior: "smooth"
     });
   };
+  // Detect slide while scrolling
+  const updateActiveDot = () => {
+    const track = trackRef.current;
+    if (!track) return;
 
-  
-// Detect slide while scrolling
-const updateActiveDot = () => {
-  const track = trackRef.current;
-  const card = track.querySelector(".update-card");
-  if (!track || !card) return;
+    const card = track.querySelector(".update-card");
+    if (!card) return;
 
-  const cardWidth = card.offsetWidth + 18;
-  const index = Math.round(track.scrollLeft / cardWidth);
+    const cardWidth = card.offsetWidth + 18;
+    const index = Math.round(track.scrollLeft / cardWidth);
 
-  setActiveIndex(index);
-};
+    setActiveIndex(index);
+  };
 
-
+  /*Effects*/
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
 
     const card = track.querySelector(".update-card");
-    const cw = card.offsetWidth + 18;
+    if(!card) return;
+    //const cw = card.offsetWidth + 18;
 
- 
+
     const onScroll = () => {
       updateActiveDot();
     };
@@ -152,32 +155,31 @@ const updateActiveDot = () => {
   return (
     <div className="container">
 
-      {/* Ribbon under navbar */}
- <div className="popular-bleed" role="navigation" aria-label="Popular Searches">
-  <div className="container popular-ribbon">
+      {/* Ribbon under navbar (Popular Searches) */}
+      <div className="popular-bleed" role="navigation" aria-label="Popular Searches">
+        <div className="container popular-ribbon">
 
-    <div className="popular-title-wrap">
-      <h2 className="popular-title">Popular Searches</h2>
-    </div>
+          <div className="popular-title-wrap">
+            <h2 className="popular-title">Popular Searches</h2>
+          </div>
 
-    <div className="popular-pills-wrap">
-      <div className="popular-pills">
-        {POPULAR.map(label => (
-          <a
-            key={label}
-            href="#home"
-            className="pill"
-            role="button"
-            aria-label={`${label} (coming soon)`}
-          >
-            {label}
-          </a>
-        ))}
+          <div className="popular-pills-wrap">
+            <div className="popular-pills">
+              {POPULAR.map(label => (
+                <a
+                  key={label}
+                  href="#home"
+                  className="pill"
+                  role="button"
+                  aria-label={`${label} (coming soon)`}
+                >
+                  {label}
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-
-  </div>
-</div>
 
 
       {/* Latest Updates */}
@@ -211,7 +213,7 @@ const updateActiveDot = () => {
                 <div className="update-meta">
                 <span className="authors">{u.authors}</span>
                 <time className="update-date">
-                  <img src="src/assets/icons/timeicon.svg" alt="" className ="time-icon"/>
+                  <img src={timeIcon} alt="" className ="time-icon"/>
                   {u.date}</time>
                 </div>
               </div>
@@ -219,7 +221,7 @@ const updateActiveDot = () => {
               <p className="update-summary">{u.summary}</p>
                   <div className="update-footer">
                     <div className="update-loc">
-                      <img src="src/assets/icons/locationicon.svg" alt="" className="location-icon"/>
+                      <img src={locationIcon} alt="" className="location-icon"/>
                        {u.location}</div>
                     <button className="update-cta">
                       <span className="arrow">→</span>
@@ -252,7 +254,7 @@ const updateActiveDot = () => {
                   <div className="update-meta">
                     <span className="authors">{u.authors}</span>
                     <time className="update-date">
-                      <img src="src/assets/icons/timeicon.svg" alt="" className="time-icon" />
+                      <img src={timeIcon} alt="" className="time-icon" />
                       {u.date}
                     </time>
                   </div>
@@ -262,7 +264,7 @@ const updateActiveDot = () => {
 
                 <div className="update-footer">
                   <div className="update-loc">
-                    <img src="src/assets/icons/locationicon.svg" alt="" className="location-icon" />
+                    <img src={locationIcon} alt="" className="location-icon" />
                     {u.location}
                   </div>
 
@@ -278,97 +280,87 @@ const updateActiveDot = () => {
 
       </section>
       <section className="home-section rs-community-wrap">
-         <div className="rs-community-grid">
+        <div className="rs-community-grid">
 
-       {/* Left Column Regional Spotlight */}
-       <div className="rs-left-col">
-        <h2 className="rs-spotlight-title">Regional Spotlight</h2>
-        <div className="rs-card">
-          <h3 className="rs-title">Finger Lakes Watershed Study</h3>
-          <p className="rs-subhead">
-          Current season monitoring across tributaries and shore farms.
-          </p>
+          {/* Left Column Regional Spotlight */}
+          <div className="rs-left-col">
+            <h2 className="rs-spotlight-title">Regional Spotlight</h2>
+            <div className="rs-card">
+              <h3 className="rs-title">Finger Lakes Watershed Study</h3>
+              <p className="rs-subhead">
+                Current season monitoring across tributaries and shore farms.
+              </p>
           
-          <div className="rs-map-wrap">
-          <img
-            src="/src/assets/fingerlakesimg.png"
-            alt="Finger Lakes Watershed Map"
-            className="rs-map"
-          />
-         </div>
+              <div className="rs-map-wrap">
+                <img
+                  src="/src/assets/fingerlakesimg.png"
+                  alt="Finger Lakes Watershed Map"
+                  className="rs-map"
+                />
+              </div>
 
-        <button
-          className="rs-cta"
-          onClick={() =>
-            document.querySelector("#maps").scrollIntoView({ behavior: "smooth" })}>
-          Explore the Full Map
-        </button>
+              <a className="rs-cta" href="/maps">
+                Explore the Full Map
+              </a>
 
-        <p className="rs-desc">
-          Monitoring water quality impacts from agricultural practices. This
-          comprehensive study includes 45 farms and 15 research stations across
-          the watershed.
-        </p>
+              <p className="rs-desc">
+                Monitoring water quality impacts from agricultural practices. This
+                comprehensive study includes 45 farms and 15 research stations across
+                the watershed.
+              </p>
 
-        <div className="rs-kpi-grid">
-          <div className="rs-kpi">
-            <div className="rs-kpi-num">10</div>
-            <div className="rs-kpi-label">Active Research Sites</div>
-          </div>
-
-          <div className="rs-kpi">
-            <div className="rs-kpi-num">89</div>
-            <div className="rs-kpi-label">Datasets Available</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    {/* Right Column RIW Community */}
-    <div className="rs-right-col">
-      <div className="community-card">
-
-        <h3 className="community-title">RIW Community</h3>
-
-        <div className="community-feed">
-          {COMMUNITY_POSTS.map((post, i) => (
-            <div key={i} className="comm-post">
-              <div className="comm-header">
-                <div className="avatar">{post.avatar}</div>
-                <div className="info">
-                  <div className="name">{post.name}</div>
-                  <div className={`tag tag-${post.tag.toLowerCase()}`}>{post.tag}</div>
-
+              <div className="rs-kpi-grid">
+                <div className="rs-kpi">
+                  <div className="rs-kpi-num">10</div>
+                  <div className="rs-kpi-label">Active Research Sites</div>
                 </div>
-                <div className="date">{post.date}</div>
+
+                <div className="rs-kpi">
+                  <div className="rs-kpi-num">89</div>
+                  <div className="rs-kpi-label">Datasets Available</div>
+                </div>
               </div>
-
-              <div className="comm-title">
-               <img src={post.icon} alt="" className="comm-title-icon" />
-               {post.title}
-              </div>
-
-
-              <div className="comm-summary">{post.summary}</div>
-
-              <div className="comm-location">
-                <img src="/src/assets/icons/locationicon.svg" />
-                {post.location}
-              </div>
-              <span className="post-badge">{post.keyword}</span>
-
-              <button className="comm-cta">→</button>
             </div>
-          ))}
+          </div>
+
+          {/* Right Column RIW Community */}
+          <div className="rs-right-col">
+            <div className="community-card">
+              <h3 className="community-title">RIW Community</h3>
+
+              <div className="community-feed">
+                {COMMUNITY_POSTS.map((post, i) => (
+                  <div key={i} className="comm-post">
+                    <div className="comm-header">
+                      <div className="avatar">{post.avatar}</div>
+                      <div className="info">
+                        <div className="name">{post.name}</div>
+                        <div className={`tag tag-${post.tag.toLowerCase()}`}>{post.tag}</div>
+                      </div>
+                      <div className="date">{post.date}</div>
+                    </div>
+
+                    <div className="comm-title">
+                      <img src={post.icon} alt="" className="comm-title-icon" />
+                      {post.title}
+                    </div>
+
+
+                    <div className="comm-summary">{post.summary}</div>
+                          <div className="comm-location">
+                            <img src={locationIcon} />
+                            {post.location}
+                          </div>
+                          <span className="post-badge">{post.keyword}</span>
+                          <button className="comm-cta">→</button>
+                  </div>
+                ))}
+              </div>
+              <button className="view-all">View All Posts →</button>
+            </div>
+          </div>
         </div>
-
-        <button className="view-all">View All Posts →</button>
-
-      </div>
-    </div>
-
-  </div>
-</section>
+      </section>
 
       {/* Data Insights */}
       <section className="home-section">
@@ -411,56 +403,54 @@ const updateActiveDot = () => {
       <section className="mission-subscribe-wrap">
         <div className="mission-subscribe-grid">
 
-      {/* Subscribe Card */}
-      <div className="subscribe-card">
-        <h2 className="sub-title">Stay Connected with RIW</h2>
-        <p className="sub-subtitle">Subscribe to Our <br/> Newsletter</p>
-        <p className="sub-text">
-        Get weekly insights on sustainable agriculture research, water quality updates,
-        and community stories delivered to your inbox.
-        </p>
+          {/* Subscribe Card */}
+          <div className="subscribe-card">
+              <h2 className="sub-title">Stay Connected with RIW</h2>
+              <p className="sub-subtitle">Subscribe to Our <br/> Newsletter</p>
+              <p className="sub-text">
+              Get weekly insights on sustainable agriculture research, water quality updates,
+              and community stories delivered to your inbox.
+              </p>
 
-      <form
-        className="subscribe"
-        onSubmit={(e) => {
-          e.preventDefault();
-          alert("work in progress lol");
-        }}
-      >
-        <input type="email" placeholder="Enter your email address" />
-        <button type="submit">Subscribe</button>
-      </form>
+            <form
+              className="subscribe"
+              onSubmit={(e) => {
+                e.preventDefault();
+                alert("work in progress lol");
+              }}
+            >
+              <input type="email" placeholder="Enter your email address" />
+              <button type="submit">Subscribe</button>
+            </form>
 
-      <p className="privacy-note">
-        We respect your privacy. Unsubscribe at any time.
-      </p>
-    </div>
+            <p className="privacy-note">
+              We respect your privacy. Unsubscribe at any time.
+            </p>
+          </div>
 
-    {/* Mission Text */}
-    <div className="mission-card">
-      <h2 className="mission-title">Our Mission</h2>
+          {/* Mission Text */}
+          <div className="mission-card">
+            <h2 className="mission-title">Our Mission</h2>
 
-      <p className="mission-text">
-        Rooted In Water is <span className="mission-highlight">Rooted in Culture</span>
-      </p>
+            <p className="mission-text">
+              Rooted In Water is <span className="mission-highlight">Rooted in Culture</span>
+            </p>
 
-      <p className="mission-body">
-        Sustainability is more than science and data, it is culture. We are committed
-        to connecting cutting-edge research with lived experiences, uniting students,
-        farmers, and researchers around water-quality data, agricultural practices,
-        and community knowledge.
-      </p>
+            <p className="mission-body">
+              Sustainability is more than science and data, it is culture. We are committed
+              to connecting cutting-edge research with lived experiences, uniting students,
+              farmers, and researchers around water-quality data, agricultural practices,
+              and community knowledge.
+            </p>
 
-      <p className="mission-body">
-        Resilience comes not only from technology, but also from the cultural roots
-        that guide how we care for our land and water. Together, we’re cultivating a more
-        sustainable future.
-      </p>
-    </div>
-
-  </div>
-</section>
-
+            <p className="mission-body">
+              Resilience comes not only from technology, but also from the cultural roots
+              that guide how we care for our land and water. Together, we're cultivating a more
+              sustainable future.
+            </p>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

@@ -1,5 +1,4 @@
-import React from "react";
-import logoUrl from '../assets/logowrapper.svg'
+import logoUrl from "../assets/logowrapper.svg";
 
 export default function Landing(){
     return ( 
@@ -11,7 +10,7 @@ export default function Landing(){
                     className="landing-logo"
                     draggable="false"
                 />
-                <span id="riw-logo-start" aria-hidden="true"></span>
+                <span id="riw-logo-start" aria-hidden="true" />
             </div>
 
             <p className="landing-tagline">

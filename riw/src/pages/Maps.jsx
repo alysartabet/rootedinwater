@@ -1,4 +1,5 @@
-import React, { useState, useMemo } from "react";
+import { useState, useMemo } from "react";
+
 import commDist from "../assets/maps/community_districts.png"; 
 import flood from "../assets/maps/flood.png";
 import topo from "../assets/maps/topography.png";

@@ -1,5 +1,4 @@
-import React from 'react';
-import logoUrl from '../assets/logoimgbw.png'
+import logoUrl from "../assets/logoimgbw.png"
 
 export default function Footer(){
     return (
@@ -18,20 +17,20 @@ export default function Footer(){
                 <div className="footer-links">
                     <nav aria-label="Platform" className="footer-col">
                         <h3>Platform</h3>
-                        <a href="#home">Research Search</a>
-                        <a href="#home">Regional Maps</a>
-                        <a href="#home">Data Analytics</a>
+                        <a href="/search">Research Search</a>
+                        <a href="/maps">Regional Maps</a>
+                        <a href="/data">Data Analytics</a>
                     </nav>
 
                     <nav aria-label="Community" className="footer-col">
                         <h3>Community</h3>
-                        <a href="#home">Community Blog</a>
-                        <a href="#home">Contact Us</a>
-                        <a href="#home">Get Involved</a>
+                        <a href="/blog">Community Blog</a>
+                        <a href="/home">Contact Us</a>
+                        <a href="/blog">Get Involved</a> 
                     </nav>
                 </div>
                 
-                <a className="footer-cta" href="#home" role="button">Contact Us</a>
+                <a className="footer-cta" href="/data" role="button">Contact Us</a>
 
                 <div className="footer-social" aria-label="Social links">
                     <a href="#home" aria-label="X / Twitter" className="soc soc-x">
