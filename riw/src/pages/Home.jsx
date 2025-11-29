@@ -363,41 +363,110 @@ export default function Home() {
       </section>
 
       {/* Data Insights */}
+
       <section className="home-section">
         <header className="section-head">
           <h2>Data Insights</h2>
         </header>
+      <div className="insights-3col">
 
-        <div className="insights">
+       {/* LEFT: Recent Measurements */}
+      <div className="insights-left">
+        <h3 className="insights-left-title">Recent Measurements</h3>
 
-          <div className="insight-card">
-            <h4>Nitrate Levels in Western Orange County (mg/L)</h4>
-            <div className="mini-chart" aria-label="Nitrate sparkline">
-              <div style={{ height: "18%" }} />
-              <div style={{ height: "32%" }} />
-              <div style={{ height: "26%" }} />
-              <div style={{ height: "44%" }} />
-              <div style={{ height: "38%" }} />
-              <div style={{ height: "52%" }} />
-              <div style={{ height: "35%" }} />
-            </div>
-          </div>
-
-          <div className="insight-card">
-            <h4>Hudson Valley Runoff Index</h4>
-            <div className="mini-chart" aria-label="Runoff index bars">
-              <div style={{ height: "22%" }} />
-              <div style={{ height: "48%" }} />
-              <div style={{ height: "60%" }} />
-              <div style={{ height: "40%" }} />
-              <div style={{ height: "55%" }} />
-              <div style={{ height: "62%" }} />
-              <div style={{ height: "30%" }} />
-            </div>
-          </div>
-
+        <div className="measure-item">
+            <div className="measure-info">
+            <strong>Cayuga Lake - North End</strong>
+            <span>pH: 7.8 | DO: 9.2 mg/L</span>
         </div>
-      </section>
+      <span className="status-badge low">low</span>
+      </div>
+
+      <div className="measure-item">
+        <div className="measure-info">
+          <strong>Seneca Lake - South Basin</strong>
+          <span>pH: 8.1 | DO: 10.1 mg/L</span>
+        </div>
+        <span className="status-badge none">none</span>
+      </div>
+
+      <div className="measure-item">
+        <div className="measure-info">
+          <strong>Hudson River - Poughkeepsie</strong>
+          <span>pH: 7.3 | DO: 11.3 mg/L</span>
+        </div>
+        <span className="status-badge moderate">moderate</span>
+      </div>
+    </div>
+
+    {/* MIDDLE CHART CARD */}
+        <div className="insight-large-card">
+      <h4>Nitrate Levels in Western Orange County (mg/L)</h4>
+
+     <div className="insight-curve-chart">
+      <svg viewBox="0 0 100 50" preserveAspectRatio="none">
+       <path
+    d="M0,50 C15,50 30,49 40,47.5 C55,45 65,40 75,32 C85,23 93,12 100,0"
+    stroke="#222"
+    strokeWidth="1"
+    fill="none"
+    strokeLinecap="round"
+  />
+       </svg>
+     </div>
+
+      <a className="insight-link" href="/data">Analyze in Data →</a>
+      <p className="insight-desc">
+        Levels spiked in July 2024 after heavy rainfall, showing correlation between runoff and fertilizer application.
+      </p>
+
+    </div>
+
+    {/* RIGHT CHART CARD */}
+    <div className="insight-large-card">
+      <h4>Hudson Valley Runoff Index (2025)</h4>
+
+      <div className="hv-chart">
+        <svg viewBox="0 0 100 60" preserveAspectRatio="none">
+         {/* Horizontal grid lines */}
+        <g stroke="rgba(0,0,0,0.25)" strokeWidth="0.4">
+         {[5,15,25,35,45,55].map(y => (
+        <line key={y} x1="0" x2="100" y1={y} y2={y} />
+        ))}
+      </g>
+
+       {/* Bar groups */}
+      <g>
+      {/* Group 1 */}
+      <rect x="8"  y={59 - 20} width="6" height="20" fill="#888" />
+      <rect x="15" y={59 - 27} width="6" height="27" fill="#0d2818" />
+
+      {/* Group 2 */}
+      <rect x="32" y={59 - 13} width="6" height="13" fill="#888" />
+      <rect x="39" y={59 - 40} width="6" height="40" fill="#0d2818" />
+
+      {/* Group 3 */}
+      <rect x="56" y={59 - 25} width="6" height="25" fill="#888" />
+      <rect x="63" y={59 - 30} width="6" height="30" fill="#0d2818" />
+
+      {/* Group 4 */}
+      <rect x="80" y={59 - 17} width="6" height="17" fill="#888" />
+      <rect x="87" y={59 - 33} width="6" height="33" fill="#0d2818" />
+    </g>
+
+    {/* Baseline */}
+    <line x1="0" x2="100" y1="59" y2="59" stroke="#000" strokeWidth="0.7" />
+  </svg>
+</div>
+
+      <a className="insight-link" href="/data">Analyze in Data →</a>
+      <p className="insight-desc">
+        Highest runoff in Spring 2025 (42% above average), linked to reduced cover cropping adoption.
+      </p>
+    </div>
+
+  </div>
+</section>
 
       {/* Our Mission & Subscribe*/}
       <section className="mission-subscribe-wrap">
@@ -454,3 +523,4 @@ export default function Home() {
     </div>
   );
 }
+

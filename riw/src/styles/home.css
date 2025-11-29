@@ -610,42 +610,176 @@
 
 
 /* ==== Data Insights ==== */
-.insights {
+.insights-3col {
   display: grid;
-  gap: 18px;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: 300px 1fr 1fr;
+  gap: 22px;
+  margin-top: 22px;
 }
-
-.insight-card {
-  border: 1px solid rgba(255,255,255,.10);
+.insights-left {
+  background: white;
+  padding: 18px;
   border-radius: 16px;
-  padding: 14px;
-  background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.03));
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+  border: 1px solid rgba(0,0,0,0.06);
 }
 
-.insight-card h4 {
-  margin: 0 0 10px;
+.insights-left-title {
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
+  margin-bottom: 14px;
+  font-weight: 600;
 }
 
-.mini-chart {
+.measure-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 14px;
+  background: #C3CAC5;
+  border-radius: 20px;
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+  margin-bottom: 10px
+}
+
+.measure-item:last-child {
+  border-bottom: none;
+}
+
+.measure-info {
+  flex: 1;                
+  min-width: 0;             
+  overflow-wrap: break-word;
+}
+
+.measure-info strong {
+  font-size: 14px;
+  color: #444;
+}
+
+.measure-info span {
+  font-family: "Forum", serif;
+  font-size: 12px;
+  color: #666;
+  display: block;
+  margin-top: 2px;
+}
+
+.status-badge {
+  flex-shrink: 0;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-family: "Forum", serif;
+  font-weight: 600;
+  text-transform: lowercase;
+  color: white;
+}
+
+.status-badge.low { background: #A06633; }
+.status-badge.none { background: #177D37; }
+.status-badge.moderate { background: #A78B28; }
+
+.insight-large-card {
+  background: white;
+  padding: 18px 20px;
+  border-radius: 16px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+.insight-large-card h4 {
+  margin-top: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #444;
+}
+
+.insight-chart {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 6px;
-  height: 120px;
   align-items: end;
+  height: 140px;
+  gap: 6px;
+  margin: 14px 0;
+}
 
-  padding: 8px;
+.insight-curve-chart {
+  position: relative;
+  height: 140px;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.18) 0px,
+      rgba(0, 0, 0, 0.18) 1px,
+      transparent 1px,
+      transparent 22px
+    );
   border-radius: 10px;
-
-  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0));
-  border: 1px solid rgba(255,255,255,.06);
+  padding: 6px;
 }
 
-.mini-chart > div {
-  background: rgba(141,218,183,.8);
-  border: 1px solid rgba(0,0,0,.08);
+.insight-curve-chart svg {
+  width: 100%;
+  height: 100%;
+}
+
+.insight-curve-chart path {
+  stroke-linecap: round;
+}
+
+
+.insight-chart > div {
+  background: #5a8f5a;
   border-radius: 4px;
+  opacity: 0.85;
 }
+
+.insight-chart.bars > div {
+  background: #4e6b74;
+}
+
+.insight-desc {
+  font-size: 15px;
+  font-family: "Forum", serif;
+  color: #555;
+  margin-bottom: 10px;
+  line-height: 1.45;
+}
+
+.insight-link {
+   display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #444;
+  font-family: "Forum", serif;
+  font-style: italic;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.insight-link:hover {
+  transform: translateY(-2px);
+
+}
+
+.hv-chart {
+  height: 140px;
+  padding: 6px;
+  align-items: center;
+}
+
+.hv-chart svg {
+  width: 100%;
+  height: 100%;
+}
+
+.insight-curve-chart,
+.hv-chart {
+  width: 60%;
+  margin: 0 auto; 
+}
+
 
 
 /* ==== Mission and Sub Grid ==== */
@@ -837,6 +971,7 @@
   
 }
 
+
 .pill {
   display: grid;
   grid-template-columns: 1fr;
@@ -904,6 +1039,25 @@ border-color: rgba(110, 136, 130, 0.55);
     overflow: hidden;
     text-overflow: ellipsis;
   }
+  /*Data Insights*/
+ .insights-3col {
+    grid-template-columns: 1fr !important; 
+    gap: 18px;
+  }
+
+  .insights-left,
+  .insight-large-card {
+    width: 80%;
+    padding: 16px;
+    margin: 0 auto;
+  }
+
+  .insight-curve-chart,
+  .hv-chart {
+    width: 60%; 
+    margin: 0 auto;
+  }
+
 
   /*Mission/Subscribe*/
  .mission-subscribe-grid{
@@ -1044,6 +1198,25 @@ border-color: rgba(110, 136, 130, 0.55);
   .tag {
     font-size: 9px;
     padding: 1px 6px;
+  }
+
+  /*Data Insights*/
+ .insights-3col {
+    grid-template-columns: 1fr !important; 
+    gap: 18px;
+  }
+
+  .insights-left,
+  .insight-large-card {
+    width: 80%;
+    padding: 16px;
+    margin: 0 auto;
+  }
+
+  .insight-curve-chart,
+  .hv-chart {
+    width: 60%; 
+    margin: 0 auto;
   }
 
   /*Mission/Subscribe*/
