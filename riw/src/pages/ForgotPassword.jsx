@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
+import BackLogo from "../assets/whitelogo.svg";
 import "../styles/forgotpassword.css";
 
 export default function ForgotPassword() {
   return (
     <div className="auth-page">
+          <Link to="/account/sign-in" className="back-btn">
+            <img src={BackLogo} alt="Back" className="back-btn-img" />
+          </Link>
       <div className="forgot-card">
         <h1 className="forgot-title">
           Forgot <br />

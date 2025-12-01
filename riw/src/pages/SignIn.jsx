@@ -1,10 +1,14 @@
 import { Link } from "react-router-dom"
+import BackLogo from "../assets/whitelogo.svg";
 import "../styles/signin.css";
 
 
 export default function SignIn() {
   return (
     <div className="auth-page">
+      <Link to="/" className="back-btn">
+        <img src={BackLogo} alt="Back" className="back-btn-img" />
+      </Link>
       <div className="auth-card" aria-label="Sign in">
         <h1 className="auth-title">Sign In</h1>
         <form className="auth-form">
