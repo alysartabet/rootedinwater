@@ -1,0 +1,233 @@
+.auth-register-page {
+  min-height: 100vh;
+  width: 100%;
+  background-image: url("../assets/registerbg.svg");
+  background-size: contain;         
+  background-position: top center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background-color: #BDCAB8;    
+}
+
+/*logo back button*/
+.back-btn {
+  position: absolute;
+  top: 25px;  
+  left: 25px;    
+  z-index: 999;  
+}
+
+.back-btn-img {
+  width: 300px;   
+  height: auto;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.back-btn-img:hover {
+  opacity: 0.8;
+}
+
+.register-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 60px;
+  row-gap: 20px;
+  width: 80%;
+  max-width: 1200px;
+  padding-top: 120px;
+}
+
+/* Title*/
+.register-title {
+  font-family: "Cormorant Unicase", serif;
+  font-size: 60px;
+  color: #402A12;
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+/* Left */
+.register-left {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Social sign in */
+.register-social-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 14px;
+  width: 70%;
+  background: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: "Forum", serif;
+  font-size: 22px;
+  color: #402A12;
+}
+
+.social-btn img.social-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.register-fb-btn {
+  background: #fff;
+}
+
+.register-google-btn {
+  background: #fff;
+}
+
+.register-or {
+  margin: 10px 0;
+  font-size: 24px;
+  font-weight: 800;
+  color: #402A12;
+}
+.register-social-btn:hover {
+  background: #3F632B;
+  color: #fff;
+}
+
+/* LABELS & INPUTS */
+.register-label {
+  display: block;
+  font-family: "Forum", serif;
+  font-size: 22px;
+  color: #402A12;
+  margin-bottom: 6px;
+  font-family: "Forum", serif;
+}
+
+
+.register-input {
+  width: 100%;
+  display: block;
+  padding: 16px 10px;
+  border-radius: 10px;
+  border: 1px solid #65421E;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+  background: #fff;
+  margin-bottom: 20px;   
+  font-size: 16px;
+  font-family: "Forum", serif;
+}
+
+.register-right {
+  margin-top: 100px; 
+}
+
+.register-row {
+  display: flex;
+  gap: 15px;
+}
+.register-label.small {
+  width: 100%;
+}
+
+.register-input.small {   
+  width: 40%;
+}
+
+.register-label.medium .label-text {
+  margin-left: 160px;  
+  display: inline-block;
+}
+.register-input.medium {  
+  width: 60%;
+  margin-left: 160px;
+}
+
+.register-label.full-width {
+  width: 60%;  
+}
+.researcher-input {
+  width: 70% !important;       
+}
+
+
+
+
+/* Headers */
+.researcher-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-right: 60px;
+}
+
+.describe-title {
+  font-family: "Forum", serif;
+  font-size: 28px;
+  color: #402A12;
+  font-weight: 400;
+}
+
+.researcher-title {
+  font-family: "Forum", serif;
+  font-size: 30px;
+  color: #402A12;
+  font-weight: 400;
+  padding-top: 10px; 
+}
+
+.describe-title {
+  text-align: left;
+  line-height: 1.2;
+}
+
+
+
+/* Register button */
+.register-btn {
+  width: 50%;
+  padding: 16px;
+  background: #65421E;
+  opacity: 0.50;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-family: "Cormorant Unciase", serif;
+  font-size: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: 0.25s;
+}
+
+.register-btn:hover {
+  opacity: 1;
+  background: #3F632B;
+}
+
+/* Footer */
+.register-footer {
+  margin-top: 15px;
+  margin-left: 30px;
+  font-size: 13px;
+  color: #402A12;
+}
+
+.register-footer a {
+  font-weight: bold;
+  color: #402A12;
+  text-decoration: none;
+}
+
+.register-footer a:hover {
+  text-decoration: underline;
+}
+
+

@@ -116,6 +116,7 @@
 
 .auth-primary-btn:hover {
   background: #3F632B;
+  opacity: 1;
 }
 
 /* Footer */
