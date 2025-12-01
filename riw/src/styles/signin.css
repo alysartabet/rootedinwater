@@ -1,0 +1,237 @@
+.auth-page {
+  min-height: 100vh;
+  width: 100%;
+  background-image: url("../assets/signin.svg");
+  background-size: cover;         
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background-color: #BDCAB8;    
+}
+
+/* Sign In Card */
+
+.auth-card {
+  width: 40%;
+  max-width: 420px;
+  background: transparent;
+  padding: 32px 36px;
+  animation: fadeIn 0.4s ease;
+  position: relative;
+  right: -10%;
+  top: -2%;
+  z-index: 10;
+}
+
+.auth-title {
+  position: relative;
+  font-family: "Cormorant Unicase", serif;
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #402A12;
+}
+
+/* Labels & Inputs */
+
+.auth-label {
+  position: relative;
+  left: 25px;
+  display: block;
+  margin-bottom: 24px;
+  font-family: "Forum", serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: #402A12;
+}
+
+.auth-input {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 14px 14px;
+  margin-top: 6px;
+  border-radius: 10px;
+  border: 1px solid #c7c7c7;
+  background: #f9f9f9;
+  font-size: 15px;
+  transition: border 0.2s;
+}
+
+.auth-input:focus {
+  border-color: #7c9d79;
+  outline: none;
+  background: white;
+}
+
+.auth-label:last-of-type {
+  margin-bottom: 8px; 
+}
+
+
+.auth-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.auth-link {
+  color: #402A12;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.auth-link:hover {
+  text-decoration: underline;
+}
+
+.auth-row .auth-link {
+  position: relative;
+  right: 10px; 
+}
+
+
+/* Sign In Button */
+
+.auth-primary-btn {
+  position: relative;
+  left: 50px;
+  width: 70%;
+  padding: 12px;
+  background: #65421E;
+  opacity: 50%;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-family: "Forum",serif;
+  font-size: 24px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.25s;
+}
+
+.auth-primary-btn:hover {
+  background: #3F632B;
+}
+
+/* Footer */
+
+.auth-footer-text {
+  position: relative;
+  left: 60px;
+  font-family: "Forum",serif;
+  text-align: center;
+  font-size: 12px;
+  color: #402A12;
+  max-width: 200px;  /* to force a line break */
+  line-height: 1.4;
+}
+
+@media (max-width:1024px){
+
+/* Sign-In Card */
+
+.auth-card {
+  width: 40%;
+  max-width: 420px;
+  background: transparent;
+  padding: 32px 36px;
+  animation: fadeIn 0.4s ease;
+  position: relative;
+  right: -17%;
+  top: -2%;
+  z-index: 10;
+}
+
+.auth-title {
+  position: relative;
+  right: 30px;
+  font-family: "Cormorant Unicase", serif;
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #402A12;
+}
+
+/* Labels & Inputs */
+
+.auth-label {
+  position: relative;
+  left: 25px;
+  display: block;
+  margin-bottom: 24px;
+  font-family: "Forum", serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: #402A12;
+}
+
+.auth-input {
+  width: 100%;
+  padding: 12px 14px;
+  margin-top: 6px;
+  border-radius: 10px;
+  border: 1px solid #c7c7c7;
+  background: #f9f9f9;
+  font-size: 15px;
+  transition: border 0.2s;
+}
+
+.auth-input:focus {
+  border-color: #7c9d79;
+  outline: none;
+  background: white;
+}
+
+
+.auth-link {
+  color: #402A12;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.auth-row .auth-link {
+  position: relative;
+  left: 20px;
+}
+
+
+/* Sign In Button */
+
+.auth-primary-btn {
+  position: relative;
+  left: 25px;
+  width: 100%;
+  padding: 12px;
+  background: #65421E;
+  opacity: 50%;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-family: "Forum",serif;
+  font-size: 24px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.25s;
+}
+
+.auth-primary-btn:hover {
+  background: #3F632B;
+}
+
+/* Footer */
+
+.auth-footer-text {
+  position: relative;
+  left: 10px;
+  font-family: "Forum",serif;
+  text-align: center;
+  font-size: 12px;
+  color: #402A12;
+}
+}
