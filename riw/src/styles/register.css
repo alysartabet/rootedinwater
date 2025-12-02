@@ -215,7 +215,9 @@
 /* Footer */
 .register-footer {
   margin-top: 15px;
-  margin-left: 30px;
+  margin-left: -110px;
+  width: 100%;
+  text-align: center;
   font-size: 13px;
   color: #402A12;
 }
@@ -229,6 +231,44 @@
 .register-footer a:hover {
   text-decoration: underline;
 }
+
+.register-bottom-block {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;     
+  justify-content: center;
+  margin-top: 20px;
+  margin-left: -110px;
+}
+
+
+.register-progress-wrapper {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  margin-top: 12px;
+}
+
+
+.register-progress-bar { 
+  height: 10px;
+  width: 80px;              
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.register-progress-bar.active {
+  background-color: #7E7255;  
+}
+
+.register-progress-bar.inactive {
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+}
+
 @media (max-width: 1024px) {
 
   .register-container {
@@ -286,8 +326,8 @@
   }
 
   .register-btn {
-    width: 80% !important;
-    margin: 20px auto 0 auto;
+    width: 60% !important;
+    margin: 20px 145px 0 auto;
   }
 
 .register-row {
@@ -299,9 +339,10 @@
 
   .register-footer {
     text-align: center;
-    margin-left: 0;
+    margin-left: -110px;
   }
 }
+
 @media (max-width: 640px) {
 
 
@@ -341,7 +382,7 @@
 
   .register-btn {
     width: 70% !important;
-    margin: 20px auto 0 auto !important;
+    margin: 20px 30px 0 auto !important;
     display: block;
   }
 
@@ -350,5 +391,14 @@
     text-align: center !important;
     margin: 10px auto 0 auto !important;
   }
+
+.register-progress-wrapper {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  margin-top: 12px;
+  margin-left: 100px;
+}
+
 }
 

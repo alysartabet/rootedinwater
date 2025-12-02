@@ -1,10 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import BackLogo from "../assets/whitelogo.svg";
 import fbicon from "../assets/icons/facebookicon.svg";
 import googleicon from "../assets/icons/googleicon.svg";
 import "../styles/register.css";
 
+
 export default function CreateAccount() {
+    const navigate = useNavigate();
+
+  function handleRegister() {
+    navigate("/account/Terms");
+  }
+
   return (
     <div className="auth-register-page">
         <Link to="/account/sign-in" className="back-btn">
@@ -104,7 +111,17 @@ export default function CreateAccount() {
         </label>
 
 
-          <button className="register-btn">Register!</button>
+         <div className="register-bottom-block">
+          <button className="register-btn" onClick={handleRegister}>
+          Register!
+         </button>
+
+          <div className="register-progress-wrapper">
+          <div className="register-progress-bar active"></div>
+          <div className="register-progress-bar inactive"></div>
+      </div>
+    </div>
+
 
           <p className="register-footer">
             Already have an account? <Link to="/account/sign-in">Sign In</Link>

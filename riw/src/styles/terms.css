@@ -1,0 +1,207 @@
+.terms-page {
+  min-height: 100vh;
+  width: 100%;
+  background-color: #BDCAB8;
+  background-image: url("../assets/termsbg.svg");
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  flex-direction: column;
+  padding: 80px 20px;
+}
+
+/* Title */
+.terms-title {
+  font-family: "Cormorant Unicase", serif;
+  font-size: 48px;
+  color: #402A12;
+  margin-top:90px;
+  margin-left: 200px;
+  margin-bottom: 40px;
+}
+
+/* Terms */
+.terms-card {
+  align-self: center;
+  background: #fff;
+  width: 70%;
+  max-width: 700px;
+  padding: 25px 35px 25px 30px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  border: 1px solid rgba(0,0,0,0.1);
+  font-family: "Forum", serif;
+  font-size: 18px;
+  color: #333;
+
+  max-height: 340px;    
+  overflow-y: auto;
+}
+.terms-card::-webkit-scrollbar {
+  width: 10px;
+}
+
+.terms-card::-webkit-scrollbar-track {
+  background: #e7e7e7;
+  border-radius: 10px;
+  margin: 12px 0; 
+}
+
+.terms-card::-webkit-scrollbar-thumb {
+  background: #b5b5b5;
+  border-radius: 10px;
+}
+
+.terms-card::-webkit-scrollbar-thumb:hover {
+  background: #9a9a9a;
+}
+
+
+
+.terms-card ol {
+  padding-left: 20px;
+}
+
+.terms-card li {
+  margin-bottom: 20px;
+}
+
+.terms-card p,
+.terms-card ul {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+/* Checkbox */
+.terms-checkbox {
+  display: flex;
+  align-self: flex-end;
+  margin-right: 380px;
+  gap: 8px;
+  margin-top: 25px;
+  font-family: "Forum", serif;
+  font-size: 20px;
+  color: #402A12;
+}
+
+.terms-checkbox input {
+  width: 20px;
+  height: 20px;
+}
+
+/* Register button */
+.terms-btn {
+  align-self: flex-end;
+  margin-right: 380px;
+  width: 50%;
+  max-width: 300px;
+  padding: 16px;
+  background: #65421E;
+  opacity: 0.6;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  font-family: "Cormorant Unicase", serif;
+  font-size: 30px;
+  cursor: pointer;
+  margin-top: 25px;
+  transition: 0.25s;
+}
+
+.terms-btn:hover {
+  opacity: 1;
+  background: #3F632B;
+}
+
+/* Footer */
+.terms-footer {
+  align-self: flex-end;
+  margin-right: 420px;
+  margin-top: 15px;
+  font-size: 16px;
+  font-family: "Forum", serif;
+  color: #402A12;
+}
+
+.terms-footer a {
+  font-weight: bold;
+  color: #402A12;
+  text-decoration: none;
+}
+
+.terms-footer a:hover {
+  text-decoration: underline;
+}
+
+.progress-wrapper {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  align-self: flex-end;
+  margin-right: 445px;
+}
+
+.progress-bar {
+    
+  height: 10px;
+  width: 80px;              
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.progress-bar.active {
+  background-color: #7E7255;  
+}
+
+.progress-bar.inactive {
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+}
+
+
+/* Mobile */
+@media (max-width: 1024px) {
+
+  .terms-title {
+    margin-left: 0 !important;
+    text-align: center;
+  }
+
+  .terms-card {
+    width: 90% !important;
+    margin: 0 auto;
+  }
+
+  .terms-checkbox,
+  .terms-btn,
+  .terms-footer,
+  .progress-wrapper {
+    align-self: center !important;
+    margin-right: 0 !important;
+    text-align: center;
+  }
+
+  .terms-btn {
+    width: 70% !important;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .terms-title {
+    font-size: 36px;
+  }
+
+  .terms-btn {
+    width: 80% !important;
+  }
+
+  .progress-wrapper {
+    gap: 8px;
+  }
+}
+
+
