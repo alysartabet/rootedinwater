@@ -15,12 +15,12 @@ export default function SignIn() {
                 <div className="social-login">
                <p className="social-or">or</p>
       
-              <button className="social-btn fb-btn">
+              <button className="signin-social-btn signin-fb-btn">
                    <img src={fbicon} alt="Facebook" className="social-icon" />
                    Sign In with Facebook
               </button>
       
-              <button className="social-btn google-btn">
+              <button className="signin-social-btn signin-google-btn">
                    <img src={googleicon} alt="Google" className="social-icon" />
                    Sign In with Google
               </button>

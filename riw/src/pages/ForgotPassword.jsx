@@ -14,12 +14,12 @@ export default function ForgotPassword() {
           <div className="social-login">
          <p className="social-or">or</p>
 
-        <button className="social-btn fb-btn">
+        <button className="forgot-social-btn forgot-fb-btn">
              <img src={fbicon} alt="Facebook" className="social-icon" />
              Sign In with Facebook
         </button>
 
-        <button className="social-btn google-btn">
+        <button className="forgot-social-btn forgot-google-btn">
              <img src={googleicon} alt="Google" className="social-icon" />
              Sign In with Google
         </button>

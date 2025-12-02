@@ -29,7 +29,7 @@ export default function CreateAccount() {
           <p className="register-or">Or</p>
 
           {/* Password for left side */}
-          <label className="register-label medium">
+          <label className="register-label medium mobile-password">
              <span className="label-text">Password*</span>
             <input type="password" className="register-input medium" />
           </label>

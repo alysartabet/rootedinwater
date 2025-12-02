@@ -229,5 +229,126 @@
 .register-footer a:hover {
   text-decoration: underline;
 }
+@media (max-width: 1024px) {
 
+  .register-container {
+    grid-template-columns: 1fr !important;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    padding-top: 60px;
+  }
+
+  .register-left,
+  .register-right {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .register-left > *,
+  .register-right > * {
+    order: 0;
+  }
+
+  .mobile-password {
+    order: 10 !important;
+    width: 80% !important;
+    margin: 0 auto !important;
+  }
+
+
+  .register-label,
+  .register-label.small,
+  .register-label.medium,
+  .register-label.full-width {
+    width: 80% !important;
+    margin: 0 auto !important;
+  }
+
+  .register-input,
+  .register-input.small,
+  .register-input.medium,
+  .researcher-input {
+    width: 80% !important;
+    margin-left: 0 !important;
+  }
+
+  .register-label.medium .label-text {
+    margin-left: 0 !important;
+  }
+
+  .register-social-btn {
+    width: 80% !important;
+  }
+
+  .register-btn {
+    width: 80% !important;
+    margin: 20px auto 0 auto;
+  }
+
+.register-row {
+  flex-direction: column !important;
+  align-items: center !important;
+  width: 100% !important;
+  gap: 0 !important;
+}
+
+  .register-footer {
+    text-align: center;
+    margin-left: 0;
+  }
+}
+@media (max-width: 640px) {
+
+
+  .register-container {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .register-left,
+  .register-right {
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .register-label,
+  .register-label.small,
+  .register-label.medium,
+  .register-label.full-width {
+    width: 90% !important;      
+    margin: 0 auto !important;   
+    text-align: left !important;  
+  }
+
+  .register-input,
+  .register-input.small,
+  .register-input.medium,
+  .researcher-input {
+    width: 100% !important;      
+    margin: 0 auto 20px auto !important;
+  }
+
+  .register-social-btn {
+    width: 90% !important;
+    margin: 0 auto;
+  }
+
+  .register-btn {
+    width: 70% !important;
+    margin: 20px auto 0 auto !important;
+    display: block;
+  }
+
+  .register-footer {
+    width: 100%;
+    text-align: center !important;
+    margin: 10px auto 0 auto !important;
+  }
+}
 
