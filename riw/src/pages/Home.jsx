@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
+
 
 import imgAgro from "../assets/articles/agro-forestry.jpg";
 import imgClimate from "../assets/articles/climate-resilient.jpg";
@@ -152,6 +154,7 @@ export default function Home() {
 
   }, []);
 
+  
   return (
     <div className="container">
 
@@ -166,15 +169,15 @@ export default function Home() {
           <div className="popular-pills-wrap">
             <div className="popular-pills">
               {POPULAR.map(label => (
-                <a
-                  key={label}
-                  href="#home"
-                  className="pill"
-                  role="button"
-                  aria-label={`${label} (coming soon)`}
+                <Link
+                key={label}
+                 to="/search"
+                 state={{ presetQuery: label }}
+                className="pill"
                 >
-                  {label}
-                </a>
+                {label}
+              </Link>
+
               ))}
             </div>
           </div>

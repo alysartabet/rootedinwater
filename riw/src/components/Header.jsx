@@ -23,6 +23,14 @@ const NAV_ITEMS = [
     { key: "blog",   label: "Blog",   to: "/blog" },
 ]
 
+const token = localStorage.getItem("riw_token");
+
+function handleLogout() {
+  localStorage.removeItem("riw_token");
+  window.location.reload(); 
+}
+
+
 export default function Header(/*{ scrollTargetSelector = ".riw-main" }*/){
     /*Hooks*/
     /*const headerRef = useRef(null);*/
@@ -107,10 +115,20 @@ export default function Header(/*{ scrollTargetSelector = ".riw-main" }*/){
 
                     <div className="nav-spacer" aria-hidden />
 
-                    <Link to="/account/sign-in" className="nav-auth">
-                        <img className="nav-auth-icon" src={profileIcon} alt="" />
-                        <span>Sign In/Up</span>
-                    </Link>
+                    {/* if logged in, show the logout button */}
+{token ? (
+  <button onClick={handleLogout} className="nav-auth logout-btn">
+    <img className="nav-auth-icon" src={profileIcon} alt="" />
+    <span>Log Out</span>
+  </button>
+) : (
+  /* If not logged in shoe the original login sign up button */
+  <Link to="/account/sign-in" className="nav-auth">
+    <img className="nav-auth-icon" src={profileIcon} alt="" />
+    <span>Sign In/Up</span>
+  </Link>
+)}
+
                 </nav>
                 {/*
                 <nav className="nav" aria-label="Primary"> 

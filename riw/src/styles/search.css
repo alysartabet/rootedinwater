@@ -67,13 +67,17 @@
   cursor: pointer;
 } 
 
-.search-grid{
-  display: grid; 
-  gap: 80px; 
+
+.search-grid {
+  display: grid;
   grid-template-columns: 1fr 1fr;
-  justify-content: center;
+  gap: 80px !important;
+  justify-items: center;      
+  align-items: start;         
   margin-top: 30px;
 }
+
+
 .search-grid h3{ 
   margin-top: 0; 
   font-family: "Cormorant Garamond", serif;
@@ -88,6 +92,8 @@
   font-weight: 400;
 }
 
+
+
 .signup-link {
   text-decoration: underline;
   font-weight: 600;
@@ -98,10 +104,6 @@
   opacity:0.7;
 }
 
-.search-grid section{
-  display: flex;
-  flex-direction: column;
-}
 
 /*shortened gap between h4 and h3*/
 .search-grid section > *:first-child {
@@ -156,11 +158,14 @@
   font-size: 15px;
   cursor: pointer;
   transition: all 0.25s ease;
+    margin-left: auto;   
+    text-decoration: underline;
 }
 .ld-result-card button:hover{
   color: #000000a3;
   transform: translateY(-2px)
 }
+
 /*Latest Articles result card*/
 .la-result-card{
   background: white;
@@ -173,6 +178,7 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
+  position: relative;
 }
 .la-result-card h4 {
   margin: 0 0 8px;
@@ -188,22 +194,26 @@
   color: #1A1B1A;
   line-height: 1.4;
 }
-.la-result-card button{
+.la-result-card button {
   all: unset;
   padding: 8px 20px;
+  margin-left: auto;
+  margin-top: auto;
   background: transparent;
   color: #1A1B1A;
   font-weight: 500;
   font-family: "Cormorant Garamond", serif;
   font-size: 15px;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: 0.25s ease;
+  text-decoration: underline;
 }
 
-.la-result-card button:hover{
+.la-result-card button:hover {
   color: #000000a3;
-  transform: translateY(-2px)
+  transform: translateY(-2px);
 }
+
 
 .la-pills{
  display: grid;
@@ -235,6 +245,22 @@
     margin-top: auto;
     width: 100%;
   }
+
+  .ld-result-card button a,
+.la-result-card button a {
+  all: unset;
+  color: inherit !important;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  text-decoration: none !important;
+}
+
+.ld-result-card button a:hover,
+.la-result-card button a:hover {
+  text-decoration: none !important;
+  
+}
 
 
 
@@ -305,7 +331,185 @@ width: 50%;
   color:#214A4C;
 }
 
+/*------ Resutls -------- */
 
+/* Hide landing UI */
+.results-page .search-grid,
+.results-page .suggested-why-search-wrap {
+  display: none !important;
+}
+
+/* Results container */
+.search-results-only {
+  width: 100%;
+  max-width: 1150px;
+  margin: 40px auto 80px;
+  padding: 0 20px;
+  font-family: "Cormorant Garamond", serif;
+  color: #1A1B1A;
+  display: flex;
+  flex-direction: column;
+  min-height: 60vh;
+}
+
+/* Text placeholder */
+.search-results-only .results-text {
+  text-align: center;
+  font-size: 26px;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  opacity: 0.9;
+  margin-top: 40px;
+}
+
+
+.pagination-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;   
+  margin-top: auto;
+}
+
+.pagination {
+  display: flex;
+  gap: 7px;
+}
+
+.pagination button {
+  all: unset;
+  margin-top: 10px;
+  padding: 6px 16px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 20px;
+  color: #1A1B1A;
+  border: 1px solid #afaeae;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.25s ease;
+  opacity: 1;
+}
+
+.pagination button:hover {
+  background: #fff;
+  transform: translateY(-2px);
+}
+
+.ellipsis{
+  color: #1A1B1A;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+
+.clear-search {
+  margin-top: 10px;
+  margin-left: auto;
+  display: block;
+  width: fit-content;
+  font-size: 18px;
+  font-family: "Cormorant Garamond", serif;
+  color: #1A1B1A;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.clear-search:hover {
+  opacity: 0.7;
+  text-decoration: 1px underline;
+}
+
+
+.api-result-item {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px 0;
+  border-bottom: 2px solid #d6d6d6;
+  font-family: "Cormorant Garamond", serif;
+}
+
+.api-result-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #214A4C;
+  text-decoration: none;
+}
+
+.api-result-title:hover {
+  text-decoration: underline;
+}
+
+
+.api-result-meta {
+  margin: 8px 0 16px;
+  font-size: 18px;
+  color: #1A1B1A;
+}
+
+.api-result-description {
+  font-family: "Forum", serif;
+  font-size: 19px;
+  color: #1A1B1A;
+  line-height: 1.45;
+}
+
+.api-result-footer > a {
+  all: unset;
+  cursor: pointer;
+  font-family: "Forum", serif;
+  font-size: 18px;
+  color: #1A1B1A;
+}
+
+.api-result-footer a:hover{
+  text-decoration: 1px underline;
+}
+
+.card-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: #585757;
+  margin-bottom: 8px;
+  font-family: "Forum", serif;
+}
+
+.meta-source {
+  font-weight: 500;
+  color: #2a2a2a;
+}
+
+.meta-date {
+  color: #555;
+}
+
+.meta-dot {
+  font-weight: 700;
+  opacity: 0.5;
+}
+
+.results-layout {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 32px;
+  align-items: start !important;
+}
+.results-column {
+  width: 100%;
+  max-width: 900px;      
+  margin-left: auto !important;
+  margin-right: auto !important;     
+}
+
+
+
+
+
+/*MOBILE VIEWS*/
 
 /*Half screen*/
   @media (max-width:1024px){
