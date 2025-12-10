@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@googlemaps/js-api-loader": "^2.0.2",
+    "@vnedyalk0v/react19-simple-maps": "^1.2.1",
+    "d3-geo": "^3.1.1",
     "firebase": "^12.6.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",

@@ -151,6 +151,7 @@ export default function Data() {
               dataKey="featureValue"
               name={featureOptions.find((f) => f.key === currentFeature)?.label}
               dot={false}
+              stroke="#2F7CF6"
             />
             <Line
               yAxisId="right"
@@ -159,6 +160,7 @@ export default function Data() {
               name="Microbial Event Rate"
               strokeDasharray="5 5"
               dot={false}
+              stroke="#6BBF59"
             />
           </LineChart>
         </ResponsiveContainer>
@@ -182,6 +184,7 @@ export default function Data() {
               dataKey="featureValue"
               name={featureOptions.find((f) => f.key === currentFeature)?.label}
               dot={false}
+              stroke="#2F7CF6"
             />
             <Line
               yAxisId="right"
@@ -190,6 +193,7 @@ export default function Data() {
               name="Surface Microbial Event Rate"
               strokeDasharray="5 5"
               dot={false}
+              stroke="#6BBF59"
             />
           </LineChart>
         </ResponsiveContainer>
@@ -206,9 +210,9 @@ export default function Data() {
             <YAxis />
             <Tooltip />
             <Legend />
-            <Bar dataKey="low" stackId="a" name="Low Yield" />
-            <Bar dataKey="med" stackId="a" name="Medium Yield" />
-            <Bar dataKey="high" stackId="a" name="High Yield" />
+            <Bar dataKey="low" stackId="a" name="Low Yield" fill="#CDEAE1" />
+            <Bar dataKey="med" stackId="a" name="Medium Yield" fill="#90D5A4"/>
+            <Bar dataKey="high" stackId="a" name="High Yield" fill="#2E7D32" />
           </BarChart>
         </ResponsiveContainer>
       );

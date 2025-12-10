@@ -102,6 +102,8 @@ export default function App() {
           }
         />
 
+        <Route path="/blog/:slug" element={<Blog />} />
+
         {/* ==== AUTH GATE ROUTES ==== */}
         <Route
           path="/account/sign-in"

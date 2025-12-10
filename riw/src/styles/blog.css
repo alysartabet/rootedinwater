@@ -1,0 +1,354 @@
+/* BLOG PAGE
+   -------------------------------------- */
+
+/* Wrapper for /blog (list) */
+.blog-page {
+  padding-block: 3.5rem 4rem;
+}
+
+/* List layout */
+.blog-list {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.3fr);
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 900px) {
+  .blog-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Individual list cards */
+.blog-card {
+  background: rgba(17, 24, 39, 0.02);
+  border-radius: 18px;
+  padding: 1.5rem 1.75rem;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.16);
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease,
+    background 0.18s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 22px 55px rgba(15, 23, 42, 0.22);
+  border-color: rgba(56, 189, 248, 0.7);
+  background: rgba(15, 23, 42, 0.02);
+}
+
+/* Meta row at top of card */
+.blog-card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+/* Left: avatar + author */
+.blog-card-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Avatar sizing just for blog, piggybacks on your existing .avatar */
+.avatar-lg {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+/* Right: icon + pill */
+.blog-card-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Author name/role */
+.blog-card-author .name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: black;
+}
+
+.blog-card-author .role {
+  font-size: 0.8rem;
+  color: rgba(100, 116, 139, 1);
+}
+
+/* Keyword pill in list view */
+.blog-card-pill {
+  font-size: 0.78rem;
+  padding: 0.28rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(94, 234, 212, 0.7);
+  background: linear-gradient(
+    120deg,
+    rgba(45, 212, 191, 0.12),
+    rgba(56, 189, 248, 0.10)
+  );
+  color: rgba(15, 23, 42, 0.92);
+  white-space: nowrap;
+}
+
+/* Small icon for category */
+.blog-card-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  display: block;
+}
+
+/* Card title */
+.blog-card-title {
+  font-size: 1.1rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.blog-card-title a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.blog-card-title a:hover {
+  text-decoration: underline;
+}
+
+/* Card teaser */
+.blog-card-teaser {
+  font-size: 0.93rem;
+  line-height: 1.6;
+  color: rgba(51, 65, 85, 0.96);
+}
+
+/* Footer row: location + meta + link */
+.blog-card-footer {
+  margin-top: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-size: 0.83rem;
+}
+
+.blog-card-location {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: rgba(51, 65, 85, 1);
+}
+
+.blog-card-location span {
+  font-size: 1rem;
+}
+
+.blog-card-meta2 {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: rgba(100, 116, 139, 1);
+  white-space: nowrap;
+}
+
+.blog-card-read-link {
+  font-size: 0.83rem;
+  text-decoration: none;
+  color: rgba(56, 189, 248, 1);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.blog-card-read-link:hover {
+  text-decoration: underline;
+}
+
+/* DETAIL VIEW
+   -------------------------------------- */
+
+.blog-post-page {
+  padding-block: 3.5rem 4.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.blog-post {
+  max-width: 760px;
+  width: 100%;
+  background: rgba(15, 23, 42, 0.98);
+  color: #f9fafb;
+  border-radius: 26px;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  box-shadow: 0 26px 75px rgba(15, 23, 42, 0.7);
+  padding: 2.2rem 2.4rem 2.6rem;
+}
+
+/* Breadcrumb */
+.blog-breadcrumb {
+  max-width: 760px;
+  width: 100%;
+  margin: 0 auto 1.2rem;
+}
+
+.blog-breadcrumb a {
+  font-size: 0.85rem;
+  text-decoration: none;
+  color: rgba(148, 163, 184, 1);
+}
+
+.blog-breadcrumb a:hover {
+  color: rgba(56, 189, 248, 1);
+}
+
+/* Header of the article */
+.blog-post-header {
+  border-bottom: 1px solid rgba(51, 65, 85, 0.9);
+  padding-bottom: 1.7rem;
+  margin-bottom: 1.7rem;
+}
+
+/* Top row: icon + pill */
+.blog-post-meta-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Bigger icon for detail view */
+.blog-post-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+/* Pill in detail view */
+.blog-post-pill {
+  font-size: 0.8rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid rgba(94, 234, 212, 0.9);
+  background: radial-gradient(
+    circle at top left,
+    rgba(45, 212, 191, 0.18),
+    rgba(56, 189, 248, 0.1),
+    rgba(15, 23, 42, 0.9)
+  );
+  color: #e5fdf8;
+}
+
+/* Main title + subtitle */
+.blog-post-title {
+  font-size: 2rem;
+  line-height: 1.2;
+  margin: 0 0 0.7rem;
+  letter-spacing: 0.01em;
+}
+
+.blog-post-subtitle {
+  margin: 0 0 1.2rem;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: rgba(203, 213, 225, 1);
+}
+
+/* Meta row under title */
+.blog-post-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.25rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Author block */
+.blog-post-author {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.blog-post-author .name {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.blog-post-author .role {
+  font-size: 0.8rem;
+  color: rgba(148, 163, 184, 1);
+}
+
+.blog-post-meta-right {
+  text-align: right;
+}
+
+.blog-post-meta-line {
+  font-size: 0.83rem;
+  color: rgba(148, 163, 184, 1);
+}
+
+/* Body */
+.blog-post-body {
+  font-size: 0.98rem;
+  line-height: 1.8;
+  color: rgba(226, 232, 240, 1);
+}
+
+/* Sections */
+.blog-post-section + .blog-post-section {
+  margin-top: 1.6rem;
+}
+
+.blog-post-section h2 {
+  font-size: 1.1rem;
+  margin-bottom: 0.55rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: rgba(148, 231, 255, 1);
+}
+
+.blog-post-section p + p {
+  margin-top: 0.65rem;
+}
+
+/* Small back link in error state */
+.back-link {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+/* Mobile tweaks */
+@media (max-width: 768px) {
+  .blog-post {
+    padding: 1.6rem 1.4rem 2.0rem;
+    border-radius: 20px;
+  }
+
+  .blog-post-title {
+    font-size: 1.5rem;
+  }
+
+  .blog-post-meta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .blog-post-meta-right {
+    text-align: left;
+  }
+}

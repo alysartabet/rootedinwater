@@ -1,0 +1,233 @@
+/* =========================================
+   DATA INSIGHTS (HOME)
+   Light, airy, matches water / Forum+Inter
+   ========================================= */
+
+.insights-3col {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr) minmax(0, 1.1fr);
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+/* Base card style used by all 3 insights cards */
+.insights-card {
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 24px;
+  padding: 1.4rem 1.5rem 1.5rem;
+  border: 1px solid rgba(203, 213, 225, 0.7);
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #111827;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+/* Left card tweaks */
+.insights-left {
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+.insights-left-title {
+  font-size: 0.98rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+
+.insights-left-desc {
+  font-size: 0.86rem;
+  color: #4b5563;
+  margin-bottom: 0.4rem;
+}
+
+/* Middle and right cards */
+.insight-large-card h4 {
+  font-family: "Forum", "Times New Roman", serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.15rem;
+}
+
+.insight-curve-chart {
+  margin-top: 0.35rem;
+  margin-bottom: 0.6rem;
+}
+
+/* Description + link */
+.insight-desc {
+  font-size: 0.86rem;
+  color: #4b5563;
+}
+
+.insight-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #2563eb;
+  text-decoration: none;
+  margin-top: 0.2rem;
+}
+
+.insight-link::after {
+  content: "›";
+  font-size: 0.9rem;
+}
+
+.insight-link:hover {
+  text-decoration: underline;
+}
+
+/* Recharts inside cards */
+.insights-card .recharts-wrapper {
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+/* Mobile: stack cards */
+@media (max-width: 960px) {
+  .insights-3col {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* =========================================
+   DATA PAGE /data
+   ========================================= */
+
+.data-page {
+  padding-block: 3rem 4rem;
+}
+
+/* Heading uses Forum already via your global; just nudge spacing */
+.data-page .section-head h1 {
+  font-family: "Forum", "Times New Roman", serif;
+  font-size: 2.1rem;
+  letter-spacing: 0.05em;
+}
+
+.data-page .section-head .section-sub {
+  max-width: 640px;
+}
+
+/* Controls row */
+.data-controls {
+  margin-top: 1.5rem;
+  margin-bottom: 1.3rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  align-items: flex-end;
+}
+
+.data-controls .control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.data-controls label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+.data-controls select {
+  min-width: 260px;
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.9);
+  background: rgba(255, 255, 255, 0.98);
+  color: #111827;
+  font-size: 0.9rem;
+  outline: none;
+  appearance: none;
+  background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.98),
+      rgba(255, 255, 255, 0.98)
+    );
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
+.data-controls select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.3);
+}
+
+/* Main chart card */
+.data-main-card {
+  border-radius: 24px;
+  padding: 1.6rem 1.7rem 1.8rem;
+  border: 1px solid rgba(203, 213, 225, 0.9);
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 22px 55px rgba(15, 23, 42, 0.12);
+}
+
+/* Give the chart a rounded feel */
+.data-main-card .recharts-wrapper {
+  border-radius: 14px;
+}
+
+/* Yield summary below chart */
+.data-summary-grid {
+  margin-top: 1.4rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.summary-card {
+  border-radius: 20px;
+  padding: 1.2rem 1.4rem 1.3rem;
+  border: 1px dashed rgba(148, 163, 184, 0.9);
+  background: rgba(255, 255, 255, 0.95);
+  color: #111827;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+}
+
+.summary-card h3 {
+  font-size: 0.96rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.6rem;
+  color: #374151;
+}
+
+.summary-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.5rem;
+}
+
+.summary-card li {
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+}
+
+.summary-card strong {
+  font-weight: 600;
+}
+
+.summary-note {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+/* Controls / chart on small screens */
+@media (max-width: 768px) {
+  .data-controls select {
+    min-width: 100%;
+  }
+
+  .data-main-card {
+    padding-inline: 1.1rem;
+  }
+}

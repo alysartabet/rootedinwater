@@ -72,7 +72,7 @@ export function HomeInsightsCharts() {
             <XAxis dataKey="month" tick={{ fontSize: 10 }} />
             <YAxis tick={{ fontSize: 10 }} />
             <Tooltip />
-            <Bar dataKey="eventRate" name="Event Rate" />
+            <Bar dataKey="eventRate" name="Event Rate" fill="#6BBF59" radius={[6, 6, 0, 0]}  />
           </BarChart>
         </ResponsiveContainer>
       </div>
@@ -87,7 +87,7 @@ export function HomeInsightsCharts() {
               <XAxis dataKey="label" />
               <YAxis />
               <Tooltip />
-              <Bar dataKey="count" name="County-Years" />
+              <Bar dataKey="count" name="County-Years" fill="#4C9AFF" radius={[6, 6, 0, 0]}/>
             </BarChart>
           </ResponsiveContainer>
         </div>

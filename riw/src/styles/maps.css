@@ -53,7 +53,16 @@
   position: relative;
 }
 
-#gmap{
+/*
+.map-inner{
+  position: relative;
+  z-index: 1;
+  max-width: 100%;
+  margin: 0 auto;
+}
+*/
+
+ #gmap {
   position: absolute;
   inset: 16px;
   border-radius: 16px;
@@ -62,6 +71,7 @@
   height: 80vh;
   margin: auto;
 }
+
 
 .map-inner{
   position: relative;
@@ -76,6 +86,7 @@
   pointer-events: none; 
 }
 
+
 .map-img{
   position: absolute;
   inset: 0;
@@ -87,7 +98,7 @@
 }
 
 @media(max-width: 900px){
-  .map-inner, #gmap{
+  .map-inner{
     width: 80vw;
   }
 }
@@ -219,4 +230,75 @@
 .dataset-list{
   margin: 0;
   padding-left: 18px;
+}
+
+.map-frame {
+  position: relative;
+  border-radius: 28px;
+  background: radial-gradient(circle at top, #fdfdfd, #e6f1ff);
+  box-shadow:
+    0 24px 60px rgba(15, 23, 42, 0.28),
+    0 0 0 1px rgba(148, 163, 184, 0.4);
+  padding: 1.4rem;
+  overflow: hidden;
+}
+
+.ny-map-svg {
+  width: 100%;
+  height: 480px;
+}
+
+/* State outline: hollow tile */
+.ny-state-outline {
+  fill: #f8fafc;
+  stroke: #0f172a;
+  stroke-width: 0.8;
+}
+
+/* Boroughs */
+.ny-borough {
+  fill: rgba(59, 130, 246, 0.12);
+  stroke: rgba(37, 99, 235, 0.7);
+  stroke-width: 0.6;
+  cursor: pointer;
+  transition: fill 0.2s ease, stroke 0.2s ease;
+}
+
+.ny-borough:hover {
+  fill: rgba(59, 130, 246, 0.25);
+}
+
+.ny-borough.selected {
+  fill: rgba(37, 99, 235, 0.4);
+  stroke: #1d4ed8;
+}
+
+/* Community districts finer mesh */
+.ny-cd {
+  fill: transparent;
+  stroke: rgba(15, 23, 42, 0.25);
+  stroke-width: 0.4;
+  cursor: pointer;
+}
+
+.ny-cd.selected {
+  stroke: #0f172a;
+  stroke-width: 0.8;
+}
+
+/* Optional PNG raster overlay */
+.map-raster-overlay {
+  pointer-events: none;
+  position: absolute;
+  inset: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  mix-blend-mode: multiply;
+  opacity: 0.7;
+}
+
+.map-raster-overlay img {
+  max-width: 100%;
+  max-height: 100%;
 }

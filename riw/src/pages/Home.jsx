@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { HomeInsightsCharts } from "../components/HomeInsightsCharts";
+import { BLOG_POSTS } from "../content/blogPosts";
+
 
 
 import imgAgro from "../assets/articles/agro-forestry.jpg";
@@ -64,42 +66,8 @@ const UPDATES = [
   }
 ];
 
-const COMMUNITY_POSTS = [
-  {
-    avatar: "T",
-    name: "Tom Stevens",
-    tag: "Farmer",
-    date: "Sep 13",
-    title: "Early Signs of Spring: What Our Water Data is Telling Us",
-    location: "Finger Lakes Region",
-    keyword:"Field Update",
-    icon: wheaticon,
-    summary:
-    "Our water monitoring stations are showing promising trends as we enter the growing season, consistently high dissolved oxygen levels across the region."
-  },
-  {
-    avatar: "L",
-    name: "Dr. Lisa Martinez",
-    tag: "Researcher",
-    date: "Aug 22",
-    title: "Cover Crop Success Story: Reducing Runoff by 40%",
-    location: "Wayne County, NY",
-    keyword:"Practice Share",
-    icon: toolsicon,
-    summary: "A three-year study on our farm shows cover crops can dramatically reduce nutrient runoff while improving soil health."
-  },
-  {
-    avatar: "A",
-    name: "Alex Chen",
-    tag: "Student",
-    date: "Aug 15",
-    title: "Student Research: Algae Blooms and Agricultural Practices in Cayuga Lake Basin",
-    location: "Cayuga Lake Basin",
-    keyword:"Reflection",
-    icon: microscopeicon,
-    summary: "Undergraduate research reveals how buffer strips can significantly reduce nutrients that contribute to harmful algae blooms."
-  }
-];
+const COMMUNITY_POSTS = BLOG_POSTS.slice(0, 3);
+
 
 
 export default function Home() {
@@ -333,13 +301,13 @@ export default function Home() {
               <h3 className="community-title">RIW Community</h3>
 
               <div className="community-feed">
-                {COMMUNITY_POSTS.map((post, i) => (
-                  <div key={i} className="comm-post">
+                {COMMUNITY_POSTS.map((post) => (
+                  <div key={post.slug} className="comm-post">
                     <div className="comm-header">
                       <div className="avatar">{post.avatar}</div>
                       <div className="info">
-                        <div className="name">{post.name}</div>
-                        <div className={`tag tag-${post.tag.toLowerCase()}`}>{post.tag}</div>
+                        <div className="name">{post.authorName}</div>
+                        <div className="tag tag-student">{post.authorRole}</div>
                       </div>
                       <div className="date">{post.date}</div>
                     </div>
@@ -349,16 +317,21 @@ export default function Home() {
                       {post.title}
                     </div>
 
-
                     <div className="comm-summary">{post.summary}</div>
-                          <div className="comm-location">
-                            <img src={locationIcon} />
-                            {post.location}
-                          </div>
-                          <span className="post-badge">{post.keyword}</span>
-                          <button className="comm-cta">→</button>
+
+                    <div className="comm-location">
+                      <img src={locationIcon} alt="" />
+                      {post.location}
+                    </div>
+
+                    <span className="post-badge">{post.keyword}</span>
+
+                    <Link to={`/blog/${post.slug}`} className="comm-cta" aria-label={`Read: ${post.title}`}>
+                      →
+                    </Link>
                   </div>
                 ))}
+
               </div>
               <button className="view-all">View All Posts →</button>
             </div>
