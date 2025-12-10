@@ -137,6 +137,7 @@ export default function MorphingLogo({
         }
       };
 
+      
       const bind = (el) => {
           target = el || window;
           // attach listeners

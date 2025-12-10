@@ -200,6 +200,15 @@
   width: 20px;
   height: 20px;
 }
+.auth-error {
+  color: #ad1111;
+  font-weight: 600;
+  padding: 8px 10px;
+
+  font-size: 12px;
+  margin: 0px 4px 0 12px;
+  text-align: left;
+}
 
 
 @media (max-width:1024px){
