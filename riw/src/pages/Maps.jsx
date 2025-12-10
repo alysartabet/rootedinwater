@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 
 import commDist from "../assets/maps/community_districts.png"; 
 import flood from "../assets/maps/flood.png";
@@ -34,13 +34,112 @@ export default function Maps() {
   );
 
   const handleExport = () => {
-    // Minimal stub: export the visible map as a PNG via <canvas> capture would go here.
-    // For now, just download the active layer image.
     const link = document.createElement("a");
     link.href = activeLayer?.src || BASE_SRC;
     link.download = `${projectName.replace(/\s+/g, "_")}_${activeLayerKey}.png`;
     link.click();
+  }
+
+  const [activeTool, setActiveTool] = useState("pan");
+  const mapRef = useRef(null);
+  // Zoom in
+  const handleZoomIn = () => {
+    if (!mapRef.current) return;
+    const currentZoom = mapRef.current.getZoom() ?? 6;
+    const nextZoom = Math.min(currentZoom + 1, 12); // respect maxZoom
+    mapRef.current.setZoom(nextZoom);
   };
+
+  // Zoom out
+  const handleZoomOut = () => {
+    if (!mapRef.current) return;
+    const currentZoom = mapRef.current.getZoom() ?? 6;
+    const nextZoom = Math.max(currentZoom - 1, 5); // respect minZoom
+    mapRef.current.setZoom(nextZoom);
+  };
+
+  // "Pan/Select" – here we'll just reset view to NY bounds
+  const handleResetView = () => {
+    if (!mapRef.current || !window.google || !window.google.maps) return;
+    const { maps } = window.google;
+
+    const nyBounds = new maps.LatLngBounds(
+      { lat: 38.0, lng: -82.0 }, // SW
+      { lat: 46.5, lng: -68.0 }  // NE
+    );
+
+    mapRef.current.fitBounds(nyBounds);
+  };
+  useEffect(() => {
+  if (!mapRef.current) return;
+
+  const isPan = activeTool === "pan";
+
+  mapRef.current.setOptions({
+    draggable: isPan,
+    gestureHandling: isPan ? "greedy" : "none",
+  });
+}, [activeTool]);
+  useEffect(() => {
+    if (!window.google || !window.google.maps) {
+      console.error("Google Maps JS not loaded");
+      return;
+    }
+
+    const { maps } = window.google;
+
+    const nyBounds = new maps.LatLngBounds(
+      { lat: 38.0, lng: -82.0 }, //SW
+      { lat: 46.5, lng: -68.0 } //NE
+    );
+
+    const map = new maps.Map(document.getElementById("gmap"), {
+      center: { lat: 42.9, lng: -75.0 },
+      zoom: 6,
+      mapTypeId: "hybrid",
+      streetViewControl: false,
+      fullscreenControl: false,
+      mapTypeControl: true,
+      zoomControl: false,
+      disableDefaultUI: true,
+      draggable: true,
+      gestureHandling: "greedy",
+      restriction: {
+        latLngBounds: nyBounds,
+        strictBounds: true,
+      },
+      minZoom: 3,
+      maxZoom: 12,
+    });
+
+    map.fitBounds(nyBounds);
+
+    fetch("/ny_state.geojson")
+      .then((res) => res.json())
+      .then((geojson) => {
+        const outline = new maps.Data({ map });
+
+        outline.addGeoJson(geojson);
+
+        outline.setStyle({
+          strokeColor: "#ff3333",
+          strokeWeight: 3,
+          strokeOpacity: 1,
+          fillOpacity: 0,
+        });
+      })
+      .catch((err) => {
+        console.error("Failed to load NY GeoJSON:", err);
+      });
+
+    mapRef.current = map;
+
+    return () => {
+      mapRef.current = null;
+    };
+  }, []);
+
+
 
   return (
     <div className="maps-page">
@@ -58,11 +157,12 @@ export default function Maps() {
       </header>
 
       <section className="map-panel" aria-label="Map viewer">
+        <div id="gmap"></div>
         <div className="map-inner">
-          {/* Base image */}
+          {/* Base image 
           <img className="map-img base" src={BASE_SRC} alt="NYC Community Districts base map" />
 
-          {/* Active layer (single-select) */}
+           Active layer (single-select) 
           {activeLayer && (
             <img
               className="map-img overlay"
@@ -100,11 +200,12 @@ export default function Maps() {
             </button>
           </aside>
 
-          {/* Corner controls (stub icons) */}
+           {/* Corner controls (stub icons) */}
           <div className="corner-tools" aria-hidden="true">
-            <button title="Pan/Select">🖐️</button>
-            <button title="Zoom In">＋</button>
-            <button title="Zoom Out">🔍</button>
+             <button title="Pan / Move map" className={activeTool === "pan" ? "active" : ""} onClick={() => setActiveTool("pan")}>
+              🖐️ </button>
+            <button title="Zoom In" onClick={handleZoomIn}>＋</button>
+            <button title="Zoom Out" onClick={handleZoomOut}>–</button>
           </div>
         </div>
       </section>
