@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom"
+import { Routes, Route, useLocation } from "react-router-dom"
 
 import LoadingGate from "./components/LoadingGate"
 import BackgroundVideo from "./components/BackgroundVideo"
@@ -20,13 +20,16 @@ import Terms from "./pages/Terms"
 
 //Main Public Site
 function SiteLayout({ children }) {
+  const location = useLocation();
+  const onHome = location.pathname === "/";
+
   return (
     <>
       <BackgroundVideo scrollTargetSelector=".riw-main" />
       <Header />
 
       <main className="riw-main">
-        <MorphingLogo scrollTargetSelector=".riw-main" />
+        {onHome && <MorphingLogo scrollTargetSelector=".riw-main" forceDocked={true} />}
         {children}
       </main>
 
@@ -45,7 +48,6 @@ function AuthLayout({ children }) {
     </div>
   )
 }
-
 
 export default function App() {
   return (
